@@ -1,15 +1,28 @@
-<?php session_start();?>
-<!doctype <!DOCTYPE html>
-<html lang="fr">
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="description" content="Camagru">
-	<meta name="keywords" content="HTML, CSS, Javascript">
 	<meta name="author" content="Florent Violin">
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<title>My Camagru</title>
+	<link rel="stylesheet" type="text/css" href="style/main.css">
+	<title>Camagru</title>
 </head>
 <body>
-	<h1>Hello World</h1>
+	<div id="wrapper">
+		<div id="header">
+			<img src="./pictures/camagru_logo.png" title="camagru" id="logo">
+		</div>
+		<div id="main_content">
+			<img src="./pictures/sf_bay.jpg" id="main_img">
+			<div id="connection_menu">
+				<?php require_once("./includes/login.php"); ?>
+			</div>
+		</div>
+		<div id="bottom_line"></div>
+		<div id="footer">
+			fviolin&copy; 2016
+		</div>
+	</div>
 </body>
 </html>
