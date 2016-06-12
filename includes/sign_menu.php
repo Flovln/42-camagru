@@ -4,11 +4,11 @@
         <form action="./includes/sign_in.php" method="POST">
 	       Username:
             <br />
-            <input type="login" name="login" value="<?=$_SESSION['login']?>" class="enter_style"/>
+            <input type="login" name="login" class="enter_style"/>
             <br />
             Password:
             <br /> 
-            <input type="password" name="passwd" value="<?=$_SESSION['passwd']?>" class="enter_style"/>
+            <input type="password" name="passwd" class="enter_style"/>
             <br />
             <input type="submit" name="submit" value="Sign In" class="submit_style" />
             <br />

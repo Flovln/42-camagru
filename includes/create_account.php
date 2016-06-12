@@ -22,8 +22,7 @@ if ($_POST['submit'] === "OK" && $_POST['login'] && $_POST['passwd'])
 	$value[] = $new;
 	$content = serialize($value);
 	file_put_contents("../private/passwd", $content);
-//	echo "OK\n";
-	require_once("home.php");
+	echo "Account successfully created\n";
 }
 else
 	echo "Error2\n";
