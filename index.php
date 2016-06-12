@@ -15,8 +15,8 @@
 		</div>
 		<div id="main_content">
 			<img src="./pictures/sf_bay.jpg" id="main_img">
-			<div id="connection_menu">
-				<?php require_once("./includes/login.php"); ?>
+			<div id="sign_menu">
+				<?php require_once("./includes/sign_menu.php"); ?>
 			</div>
 		</div>
 		<div id="bottom_line"></div>

@@ -22,8 +22,9 @@ if ($_POST['submit'] === "OK" && $_POST['login'] && $_POST['passwd'])
 	$value[] = $new;
 	$content = serialize($value);
 	file_put_contents("../private/passwd", $content);
-	echo "OK\n";
+//	echo "OK\n";
+	require_once("home.php");
 }
 else
-	echo "Error sign_up 2\n";
+	echo "Error2\n";
 ?>
