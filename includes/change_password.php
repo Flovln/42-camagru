@@ -43,7 +43,8 @@
                 	$value[$i]['passwd'] = $_POST['newpw'];
                		$content = serialize($value);
                		file_put_contents("../private/passwd", $content);
-                	echo "OK\n";
+                	echo "New password edited\n";
+                	//require_once("../index.php"); redirige vers la page d'accueil
            		}
             	else
                 	echo "ERROR OLD PASSWORD UNVALID\n";

@@ -23,6 +23,7 @@ if ($_POST['submit'] === "OK" && $_POST['login'] && $_POST['passwd'])
 	$content = serialize($value);
 	file_put_contents("../private/passwd", $content);
 	echo "Account successfully created\n";
+	//require_once("../index.php"); //redirige vers la page d'accueil
 }
 else
 	echo "Error2\n";
