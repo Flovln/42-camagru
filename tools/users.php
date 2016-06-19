@@ -1,5 +1,4 @@
-<?PHP
-//require_once ('./tools/users.php')
+<?php
 
 function is_valid_login($login) {
     return (preg_match('/^[a-zA-Z]{3,8}$/', $login));
@@ -36,10 +35,9 @@ function email_exists($email) {
 }
 
 function register_user($login, $passwd, $email) {
-  	global $pdo;
-  
-    $hashed = password_hash($passwd, PASSWORD_DEFAULT);
-    $handle = $pdo->prepare('INSERT INTO Users (login, password, email) VALUES (:login, :passwd, :email)');
+    global $pdo;
+    $hashed = password_hash($passwd, "whirlpool");
+    $handle = $pdo->prepare('INSERT INTO users ( login, passwd, email ) VALUES ( :login, :passwd, :email )');
 //    $token = hash('sha256', 'foo' . time());
     $handle->bindValue('login', $login);
     $handle->bindValue('passwd', $hashed);
@@ -50,7 +48,7 @@ function register_user($login, $passwd, $email) {
             echo $error;
         return (false);
     }
- //   ask_confirmation($login, $email); //, $token);
+    ask_confirmation($login, $email); //, $token);
     return (true);
 }
 
@@ -60,27 +58,12 @@ function ask_confirmation($login, $email) //, $token)
     $content = 'Please verify your account by visiting the link: ' . APPLICATION_ADDR . '/verify/u/' . $name; // . '/token/' . $token;
     mail($email, $subject, $content);
 }
-
-if ($_POST['submit'] === "OK" && $_POST['login'] && $_POST['passwd'] && $_POST['email']) {
-//	$wrong = true;
-//  	$success = false;
 /*
-  	echo "test";
-	$wrong_login = !is_valid_login($_POST['login']);
-	echo "test1";
-  	$wrong_email = !is_valid_email($_POST['email']);
-  	echo "test2";
-  	$wrong_passwd = !is_valid_passwd($_POST['passwd']);
-  	echo "test3";
-  	$login_exists = login_exists($_POST['login']);
-  	echo "test4";
-  	$email_exists = email_exists($_POST['email']);
-  	echo "test5";
-  	if (!$wrong_login && !$wrong_email && !$wrong_passwd !$login_exists && !$email_exists) {*/
-    	$success = register_user($_POST['login'], $_POST['passwd'], $_POST['email']);
-/*    	$wrong = false;
-  }*/
-}
-else
-	echo "Error2\n";
+function activate_email($user)
+{
+        global $pdo;
+        $handle = $pdo->prepare('UPDATE users SET mail_token = NULL, pass_token = NULL, verified = TRUE WHERE name = :user');
+        $handle->bindValue('user', $user);
+        return ($handle->execute());
+}*/
 ?>

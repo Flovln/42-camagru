@@ -1,5 +1,5 @@
 <form action="create_account.php" method="POST">
-	Identifiant: <input type="text" name="login"/>
+	Identifiant: <input type="login" name="login"/>
 	<br/>
 	Mot de passe: <input type="password" name="passwd"/>
 	<br/>
