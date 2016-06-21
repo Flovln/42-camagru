@@ -1,5 +1,15 @@
 <?php
 //require_once ('../config/setup.php');
+require_once ('../config/database.php');
+
+try
+{
+    $pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+}
+catch (PDOException $e)
+{
+    die ('Connexion SQL impossible');
+}
 
 function is_valid_login($login) {
     return (preg_match('/^[a-zA-Z]{5,12}$/', $login));
@@ -25,7 +35,7 @@ function login_exists($login) {
 }
 
 function email_exists($email) {
-    global $pdo;
+   global $pdo;
     $handle = $pdo->prepare('SELECT id FROM Users WHERE email = :email');
     $handle->bindValue('email', $email);
     if (($res = $handle->execute()) === false)
@@ -40,24 +50,19 @@ function register_user($login, $passwd, $email) {
     $hashed = password_hash($passwd, PASSWORD_DEFAULT);
     $handle = $pdo->prepare('INSERT INTO Users ( login, password, email ) VALUES ( :login, :passwd, :email )');
     $handle->bindValue('login', $login);
-    $handle->bindValue('password', $hashed);
+    $handle->bindValue('passwd', $hashed);
     $handle->bindValue('email', $email);
-    echo "TEST2";
     if ($handle->execute() === false) {
-        echo "TEST333";
         foreach ($handle->errorInfo() as $error)
             echo $error;
-        echo "TEST3";
         return (false);
     }
     ask_confirmation($login, $email); //, $token);
-    echo "TEST5";
     return (true);
 }
 
 function ask_confirmation($login, $email) //, $token) 
 {
-    echo "TEST6";
     $subject = 'Camagru: Please verify your account';
     $content = 'Please verify your account by visiting the link: ' . APPLICATION_ADDR . '/verify/u/' . $name; // . '/token/' . $token;
     mail($email, $subject, $content);
