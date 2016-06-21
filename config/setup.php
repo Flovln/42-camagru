@@ -3,6 +3,7 @@ require_once('database.php');
 $sql = file_get_contents('camagru.sql');
 
 try {
+//    global $pdo;
 	$pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

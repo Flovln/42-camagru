@@ -1,7 +1,8 @@
 <?php
+//require_once ('../config/setup.php');
 
 function is_valid_login($login) {
-    return (preg_match('/^[a-zA-Z]{3,8}$/', $login));
+    return (preg_match('/^[a-zA-Z]{5,12}$/', $login));
 }
 
 function is_valid_email($email) {
@@ -14,7 +15,7 @@ function is_valid_passwd($passwd) {
 
 function login_exists($login) {
     global $pdo;
-    $handle = $pdo->prepare('SELECT id FROM users WHERE login = :login');
+    $handle = $pdo->prepare('SELECT id FROM Users WHERE login = :login');
     $handle->bindValue('login', $login);
     if (($res = $handle->execute()) === false)
         return (false);
@@ -25,7 +26,7 @@ function login_exists($login) {
 
 function email_exists($email) {
     global $pdo;
-    $handle = $pdo->prepare('SELECT id FROM users WHERE email = :email');
+    $handle = $pdo->prepare('SELECT id FROM Users WHERE email = :email');
     $handle->bindValue('email', $email);
     if (($res = $handle->execute()) === false)
         return (false);
@@ -36,24 +37,27 @@ function email_exists($email) {
 
 function register_user($login, $passwd, $email) {
     global $pdo;
-    $hashed = password_hash($passwd, "whirlpool");
-    $handle = $pdo->prepare('INSERT INTO users ( login, passwd, email ) VALUES ( :login, :passwd, :email )');
-//    $token = hash('sha256', 'foo' . time());
+    $hashed = password_hash($passwd, PASSWORD_DEFAULT);
+    $handle = $pdo->prepare('INSERT INTO Users ( login, password, email ) VALUES ( :login, :passwd, :email )');
     $handle->bindValue('login', $login);
-    $handle->bindValue('passwd', $hashed);
+    $handle->bindValue('password', $hashed);
     $handle->bindValue('email', $email);
-//    $handle->bindValue('token', $token);
+    echo "TEST2";
     if ($handle->execute() === false) {
+        echo "TEST333";
         foreach ($handle->errorInfo() as $error)
             echo $error;
+        echo "TEST3";
         return (false);
     }
     ask_confirmation($login, $email); //, $token);
+    echo "TEST5";
     return (true);
 }
 
 function ask_confirmation($login, $email) //, $token) 
 {
+    echo "TEST6";
     $subject = 'Camagru: Please verify your account';
     $content = 'Please verify your account by visiting the link: ' . APPLICATION_ADDR . '/verify/u/' . $name; // . '/token/' . $token;
     mail($email, $subject, $content);
