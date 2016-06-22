@@ -3,11 +3,10 @@ require_once('database.php');
 $sql = file_get_contents('camagru.sql');
 
 try {
-//    global $pdo;
 	$pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	$dbname = "db_camagru";
+	$dbname = "camagru";
 	$pdo->query("CREATE DATABASE IF NOT EXISTS $dbname");
 	$pdo->query("use $dbname");
 	if ($pdo !== false && $pdo->exec($sql) === false)

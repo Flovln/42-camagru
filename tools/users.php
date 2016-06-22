@@ -1,6 +1,5 @@
 <?php
-//require_once ('../config/setup.php');
-require_once ('../config/database.php');
+include('../config/database.php');
 
 try
 {
@@ -25,6 +24,7 @@ function is_valid_passwd($passwd) {
 
 function login_exists($login) {
     global $pdo;
+
     $handle = $pdo->prepare('SELECT id FROM Users WHERE login = :login');
     $handle->bindValue('login', $login);
     if (($res = $handle->execute()) === false)
@@ -36,6 +36,7 @@ function login_exists($login) {
 
 function email_exists($email) {
    global $pdo;
+
     $handle = $pdo->prepare('SELECT id FROM Users WHERE email = :email');
     $handle->bindValue('email', $email);
     if (($res = $handle->execute()) === false)
@@ -47,24 +48,27 @@ function email_exists($email) {
 
 function register_user($login, $passwd, $email) {
     global $pdo;
+
     $hashed = password_hash($passwd, PASSWORD_DEFAULT);
-    $handle = $pdo->prepare('INSERT INTO Users ( login, password, email ) VALUES ( :login, :passwd, :email )');
+    $handle = $pdo->prepare('INSERT INTO Users ( login, password, email, email_id ) VALUES ( :login, :passwd, :email, :token )');
+    $token = hash('sha256', 'foo' . time());
     $handle->bindValue('login', $login);
     $handle->bindValue('passwd', $hashed);
     $handle->bindValue('email', $email);
+    $handle->bindValue('token', $token);
     if ($handle->execute() === false) {
         foreach ($handle->errorInfo() as $error)
             echo $error;
         return (false);
     }
-    ask_confirmation($login, $email); //, $token);
+    ask_confirmation($login, $email, $token);
     return (true);
 }
 
-function ask_confirmation($login, $email) //, $token) 
+function ask_confirmation($login, $email, $token) 
 {
     $subject = 'Camagru: Please verify your account';
-    $content = 'Please verify your account by visiting the link: ' . APPLICATION_ADDR . '/verify/u/' . $name; // . '/token/' . $token;
+    $content = 'Please verify your account by visiting the link: ' . APPLICATION_ADDR . '/verify/u/' . $login . '/token/' . $token;
     mail($email, $subject, $content);
 }
 /*
