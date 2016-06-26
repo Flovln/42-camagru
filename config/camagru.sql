@@ -3,7 +3,8 @@ CREATE TABLE `Users` (
 	`login` varchar(255) NOT NULL,
 	`password` varchar(255) NOT NULL,
 	`email` varchar(255) NOT NULL,
-	`email_id` varchar(255) NULL
+	`email_id` varchar(255) NULL,
+	`activate` tinyint(1) DEFAULT FALSE
 );
 
 CREATE TABLE `Images` (

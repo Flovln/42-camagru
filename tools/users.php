@@ -56,7 +56,7 @@ function register_user($login, $passwd, $email) {
     $handle->bindValue('login', $login);
     $handle->bindValue('passwd', $hashed);
     $handle->bindValue('email', $email);
-    $handle->bindValue('token', $token);
+    $handle->bindValue('token', $token);   
     if ($handle->execute() === false) {
         foreach ($handle->errorInfo() as $error)
             echo $error;
@@ -68,16 +68,17 @@ function register_user($login, $passwd, $email) {
 
 function ask_confirmation($login, $email, $token) {
     $subject = 'Camagru: Please verify your account';
-//    $content = 'Please verify your account by visiting the link: ' . APPLICATION_ADDR . '/verify/u/' . $login . '/token/' . $token;
-    $content = 'Please verify your account by visiting the following link <a href="http://localhost:8080/camagru/includes/activate_account.php?token=' . $token .'">Cliquez ici</a>';
+//    $link = 'http://localhost:8080/camagru/includes/activate_account.php?token=';
+    //<html></html> email form including vars like content + link
+      $content = 'Please verify your account by visiting the following link <a href="http://localhost:8888/camagru/activate_account.php?login=' . $login .'?token=' . $token .'"';
     mail($email, $subject, $content);
 }
 
-function activate_email($user){
+function activate_email($login){
         global $pdo;
 
-        $handle = $pdo->prepare('UPDATE Users SET email_id = NULL, verified = TRUE WHERE name = :user');
-        $handle->bindValue('user', $user);
+        $handle = $pdo->prepare('UPDATE Users SET email_id = NULL, activate = TRUE WHERE login = :login');
+        $handle->bindValue('login', $login);
         return ($handle->execute());
 }
 ?>
