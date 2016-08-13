@@ -15,5 +15,5 @@ if ($_POST['submit'] === "OK" && $_POST['login'] && $_POST['passwd'] && $_POST['
   	}
 }
 else
-	echo "Error create_account\n";
+	echo "error create_account\n";
 ?>

@@ -13,10 +13,10 @@ session_start();
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<img src="./pictures/camagru_logo.png" title="camagru" id="logo">
+			<img src="./pictures/Camagru_logo.png" title="camagru" id="logo">
 		</div>
 		<div id="main_content">
-			<img src="./pictures/sf_bay.jpg" id="main_img">
+			<img src="./pictures/Sf_bay.jpg" id="main_img">
 			<div id="sign_menu">
 				<?php require_once("./includes/sign_menu.php"); ?>
 			</div>

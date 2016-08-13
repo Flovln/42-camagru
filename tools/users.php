@@ -1,6 +1,8 @@
 <?php
 include('../config/database.php');
 
+// ----------------------------- ---------------------------------- //
+
 try
 {
     $pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
@@ -9,6 +11,8 @@ catch (PDOException $e)
 {
     die ('Connexion SQL impossible');
 }
+
+// ----------------------------- --------------------------------- //
 
 function is_valid_login($login) {
     return (preg_match('/^[a-zA-Z]{5,12}$/', $login));
@@ -51,8 +55,7 @@ function register_user($login, $passwd, $email) {
 
     $hashed = password_hash($passwd, PASSWORD_DEFAULT);
     $handle = $pdo->prepare('INSERT INTO Users ( login, password, email, email_id ) VALUES ( :login, :passwd, :email, :token )');
-  //  $token = hash('sha256', 'foo' . time());
-    $token = bin2hex(random_bytes(16));
+    $token = bin2hex(random_bytes(16)); //email_id
     $handle->bindValue('login', $login);
     $handle->bindValue('passwd', $hashed);
     $handle->bindValue('email', $email);
@@ -68,9 +71,10 @@ function register_user($login, $passwd, $email) {
 
 function ask_confirmation($login, $email, $token) {
     $subject = 'Camagru: Please verify your account';
-//    $link = 'http://localhost:8080/camagru/includes/activate_account.php?token=';
+    /* port 8888 for home / port 8080 for school */
+    $link = 'http://localhost:8080/camagru/includes/activate_account.php?login=' . $login .'?token=' . $token .'';
+    $content = 'Please verify your account by visiting the following link ' . $link .'';
     //<html></html> email form including vars like content + link
-      $content = 'Please verify your account by visiting the following link <a href="http://localhost:8888/camagru/activate_account.php?login=' . $login .'?token=' . $token .'"';
     mail($email, $subject, $content);
 }
 

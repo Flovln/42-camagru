@@ -1,5 +1,6 @@
 <?php
-function auth($login, $passwd) {
+include('home.php');
+/*function auth($login, $passwd) {
      $pswd_content = "";
      $content = "";
      $tab = array();
@@ -24,5 +25,5 @@ if (($_POST["submit"] === "Sign In") AND isset($_POST["login"]) AND isset($_POST
     	require_once("../index.php");
 }
 else
-	echo "Please enter your login or password";
+	echo "Please enter your login or password";*/
 ?>
