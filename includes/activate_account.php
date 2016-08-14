@@ -19,7 +19,7 @@ catch (PDOException $e)
 		$errors[] = 'error';
 	}*/
 	if (!isset($_GET['token'])) {
-		echo "no activation key filled";
+		echo "No activation key filled";
 		$errors[] = 'error';
 	}
 	if (!isset($errors) || empty($errors))
@@ -27,7 +27,7 @@ catch (PDOException $e)
 //		$handle = $pdo->prepare('SELECT * FROM users WHERE token = :email_id');
 		$handle = $pdo->prepare('SELECT * FROM users WHERE login = :login');
 		$handle->bindValue('login', $_GET['login']);
-//		$handle->bindValue('email_id', $_GET['token']);
+		$handle->bindValue('email_id', $_GET['token']);
 		if ($handle->execute() === false)
 		{
 			$errors[] = 'Database request error';
@@ -38,14 +38,14 @@ catch (PDOException $e)
 		}
 		else if ($user->activate === '1')
 		{
-			$errors[] = 'Email already validated';
+			$errors[] = 'Account already validated';
 		}
 	}
 	else
 	{
 		if ($user->mail_id === $_GET['token'])// || $user->pass_token === $_GET['token'])
 		{
-			if (activate_email($_GET['login']) === false) {
+			if (activate_email($_GET['login']) === false/* || !isset($_GET['token'])*/) {
 				$errors[] = 'Unable to activate your email, please retry or reach us';
 			}
 			else {

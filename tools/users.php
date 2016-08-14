@@ -72,7 +72,7 @@ function register_user($login, $passwd, $email) {
 function ask_confirmation($login, $email, $token) {
     $subject = 'Camagru: Please verify your account';
     /* port 8888 for home / port 8080 for school */
-    $link = 'http://localhost:8080/camagru/includes/activate_account.php?login=' . $login .'?token=' . $token .'';
+    $link = 'http://localhost:8888/camagru/includes/activate_account.php?login=' . $login .'?token=' . $token .'';
     $content = 'Please verify your account by visiting the following link ' . $link .'';
     //<html></html> email form including vars like content + link
     mail($email, $subject, $content);
