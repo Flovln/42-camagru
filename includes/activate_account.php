@@ -15,12 +15,12 @@ if (!isset($_GET['token']) || empty($_GET['token'])) {
 }
 if (!isset($errors) || empty($errors))
 {
-	$handle = $pdo->prepare('SELECT * FROM users WHERE login = :login');
-	$handle->bindValue('login', $_GET['login']);
-	if ($handle->execute() === false) {
+	$req = $pdo->prepare('SELECT * FROM users WHERE login = :login');
+	$req->bindValue('login', $_GET['login']);
+	if ($req->execute() === false) {
 		echo "Database request error";
 	}
-	else if (($user = $handle->fetch(PDO::FETCH_OBJ)) === false) {
+	else if (($user = $req->fetch(PDO::FETCH_OBJ)) === false) {
 		echo "Account not found";
 	}
 	else if ($user->activate === '1') {

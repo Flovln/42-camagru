@@ -2,7 +2,7 @@
 include('../config/database.php');
 
 // ----------------------------- ---------------------------------- //
-
+//to be move in application.php
 try {
     $pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 }
@@ -23,6 +23,21 @@ function is_valid_email($email) {
 function is_valid_passwd($passwd) {
    // return (preg_match('/^[a-zA-Z]{5,12}$/', $login)); creates error when signing up
     return (true);
+}
+
+function user_sign_in($login, $password)
+{
+    global $pdo;
+
+    $req = $pdo->prepare('SELECT password FROM users WHERE login = :login');
+    $req->bindValue(':login', $login);
+    if ($req->execute() === false) {
+        return (false);
+    }
+    if (($result = $req->fetch(PDO::FETCH_OBJ)) === false) {
+        return (false);
+    }
+    return (password_verify($password, $result->password));
 }
 
 function login_exists($login) {
