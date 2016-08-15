@@ -3,12 +3,10 @@ include('../config/database.php');
 
 // ----------------------------- ---------------------------------- //
 
-try
-{
+try {
     $pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 }
-catch (PDOException $e)
-{
+catch (PDOException $e) {
     die ('Connexion SQL impossible');
 }
 
@@ -23,6 +21,7 @@ function is_valid_email($email) {
 }
 
 function is_valid_passwd($passwd) {
+   // return (preg_match('/^[a-zA-Z]{5,12}$/', $login)); creates error when signing up
     return (true);
 }
 
@@ -72,8 +71,8 @@ function register_user($login, $passwd, $email) {
 function ask_confirmation($login, $email, $token) {
     $subject = 'Camagru: Please verify your account';
     /* port 8888 for home / port 8080 for school */
-    $link = 'http://localhost:8888/camagru/includes/activate_account.php?login=' . $login .'?token=' . $token .'';
-    $content = 'Please verify your account by visiting the following link ' . $link .'';
+    $link = 'http://localhost:8888/camagru/includes/activate_account.php?login=' . $login .'&token=' . $token;
+    $content = 'Please verify your account by visiting the following link ' . $link;
     //<html></html> email form including vars like content + link
     mail($email, $subject, $content);
 }
