@@ -1,5 +1,5 @@
 <?PHP
-include('../tools/users.php');
+include ('../tools/users.php');
 
 if ($_POST['submit'] === "OK" && $_POST['login'] && $_POST['passwd'] && $_POST['email'])
 {
@@ -15,5 +15,5 @@ if ($_POST['submit'] === "OK" && $_POST['login'] && $_POST['passwd'] && $_POST['
   	}
 }
 else
-	echo "error create_account\n";
+	echo "Error creating account\n";
 ?>
