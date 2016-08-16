@@ -12,17 +12,16 @@ if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
     //  $req->execute([$_POST['login']]);
         $user = $req->fetch(PDO::FETCH_OBJ);
         if ($user->activate === '0') {
-            echo "Please activate your account before signin";
+            echo "Please make sure your account is activated before signing in";
             return ;
         }
         $_SESSION['login'] = $login; //$_POST['login'];
-        echo "OK";
-        //rediriger vers home.php
+        header("Location: home.php");
         return ;
     }
     else {
-        echo "error sign_in";
-        //rediriger vers index.php
+        echo "Wrong username or password used, please try again";
+    //  header("Location: ../index.php");
     }
 }
 ?>
