@@ -13,7 +13,7 @@ catch (PDOException $e) {
 // ----------------------------- --------------------------------- //
 
 function is_valid_login($login) {
-    return (preg_match('/^[a-zA-Z]{5,12}$/', $login));
+    return (preg_match('/^[a-zA-Z]{5,12}$/', $login)); //add at least one int
 }
 
 function is_valid_email($email) {
@@ -21,8 +21,8 @@ function is_valid_email($email) {
 }
 
 function is_valid_passwd($passwd) {
-   // return (preg_match('/^[a-zA-Z]{5,12}$/', $login)); creates error when signing up
-    return (true);
+    return (preg_match('/^[a-zA-Z]{5,12}$/', $passwd)); //add at least one int
+//  return (true);
 }
 
 function user_sign_in($login, $password)
@@ -43,11 +43,11 @@ function user_sign_in($login, $password)
 function login_exists($login) {
     global $pdo;
 
-    $handle = $pdo->prepare('SELECT id FROM Users WHERE login = :login');
-    $handle->bindValue('login', $login);
-    if (($res = $handle->execute()) === false)
+    $req = $pdo->prepare('SELECT id FROM Users WHERE login = :login');
+    $req->bindValue('login', $login);
+    if (($res = $req->execute()) === false)
         return (false);
-    if ($handle->fetch() === false)
+    if ($req->fetch() === false)
         return (false);
     return (true);
 }
@@ -55,11 +55,11 @@ function login_exists($login) {
 function email_exists($email) {
    global $pdo;
 
-    $handle = $pdo->prepare('SELECT id FROM Users WHERE email = :email');
-    $handle->bindValue('email', $email);
-    if (($res = $handle->execute()) === false)
+    $req = $pdo->prepare('SELECT id FROM Users WHERE email = :email');
+    $req->bindValue('email', $email);
+    if (($res = $req->execute()) === false)
         return (false);
-    if ($handle->fetch() === false)
+    if ($req->fetch() === false)
         return (false);
     return (true);
 }
@@ -68,14 +68,14 @@ function register_user($login, $passwd, $email) {
     global $pdo;
 
     $hashed = password_hash($passwd, PASSWORD_DEFAULT);
-    $handle = $pdo->prepare('INSERT INTO Users ( login, password, email, email_id ) VALUES ( :login, :passwd, :email, :token )');
+    $req = $pdo->prepare('INSERT INTO Users ( login, password, email, email_id ) VALUES ( :login, :passwd, :email, :token )');
     $token = bin2hex(random_bytes(16));
-    $handle->bindValue('login', $login);
-    $handle->bindValue('passwd', $hashed);
-    $handle->bindValue('email', $email);
-    $handle->bindValue('token', $token);   
-    if ($handle->execute() === false) {
-        foreach ($handle->errorInfo() as $error)
+    $req->bindValue('login', $login);
+    $req->bindValue('passwd', $hashed);
+    $req->bindValue('email', $email);
+    $req->bindValue('token', $token);   
+    if ($req->execute() === false) {
+        foreach ($req->errorInfo() as $error)
             echo $error;
         return (false);
     }

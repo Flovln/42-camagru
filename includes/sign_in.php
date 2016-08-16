@@ -29,13 +29,11 @@ if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
             echo "Please make sure your account is activated before signing in";
             return ;
         }
-        $_SESSION['login'] = $login; //$_POST['login'];
+        $_SESSION['login'] = $login;
         header("Location: home.php");
-        return ;
     }
     else {
-        echo "Wrong username or password used, please try again";
-        return ;
+        echo "Wrong username or password, please try again";
     //  header("Location: ../index.php");
     }
 }

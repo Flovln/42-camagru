@@ -3,7 +3,7 @@ require_once('database.php');
 $sql = file_get_contents('camagru.sql');
 
 try {
-	$pdo = new PDO("mysql:host=localhost", $DB_USER, $DB_PASSWORD);
+	$pdo = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	$dbname = "camagru";
