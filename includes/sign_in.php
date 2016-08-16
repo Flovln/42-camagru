@@ -7,9 +7,23 @@ if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
     {
         $login = $_POST['login'];
         $req = $pdo->prepare('SELECT * FROM users WHERE login = :login');
-        $req->execute([":login" => $_POST['login']]);
+        
+        /* First syntax for req->execute */
+
+        $req->bindValue(':login', $login);
+        $req->execute();
+
+        /* Second syntax for req->execute */
+
+    //  $req->execute([":login" => $_POST['login']]);
+
+        /* Third syntax for req->execute */
+
     //  $req = $pdo->prepare('SELECT * FROM users WHERE login = ?');
     //  $req->execute([$_POST['login']]);
+
+        /*********************************/
+
         $user = $req->fetch(PDO::FETCH_OBJ);
         if ($user->activate === '0') {
             echo "Please make sure your account is activated before signing in";
@@ -21,6 +35,7 @@ if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
     }
     else {
         echo "Wrong username or password used, please try again";
+        return ;
     //  header("Location: ../index.php");
     }
 }
