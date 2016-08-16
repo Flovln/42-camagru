@@ -1,59 +1,34 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-			<title>Change your password</title>
-	</head>
-	<body>
-	<?php
-	if (!isset($_POST['login']) OR $_POST['oldpw'] == NULL OR $_POST['newpw'] == "") {
-	?>
-		<form action="change_password.php" method="POST">
-			Username:
-			<br /> 
-			<input type="login" name="login"/>
-			<br />
-			Old password:
-			<br /> 
-			<input type="oldpassword" name="oldpw"/>
-			<br />
-			New password:
-			<br />
-			<input type="newpassword" name="newpw"/>
-			<br />
-			<input type="submit" name="submit" value="OK"/>
-		</form>
-	<?php
+<?php
+include ('change_password.html');
+include ('../tools/users.php');
+
+if (isset($_POST['submit'], $_POST['email'], $_POST['newpwd'], $_POST['newpwd_confir'])) {
+	$errors = array();
+	if (!is_valid_email($_POST['email'])) {
+		$errors[] = 'Invalid email';
+		echo "Invalid email";
 	}
-	else if ($_POST['submit'] === "OK" AND $_POST['oldpw'] !== NULL AND $_POST['newpw'] !== "")
-	{
-		$_POST['newpw'] = hash("whirlpool", $_POST['newpw']);
-		$_POST['oldpw'] = hash("whirlpool", $_POST['oldpw']);
-		$content = @file_get_contents("../private/passwd");
-  		if (!$content)
-        	echo "ERROR\n";
-    	$value = unserialize($content);
-    	$i = 0;
-    	while ($i < count($value))
-    	{
-       		if ($value[$i]['login'] === $_POST['login'])
-       		{
-            	if ($value[$i]['passwd'] === $_POST['oldpw'])
-            	{
-                	$value[$i]['passwd'] = $_POST['newpw'];
-               		$content = serialize($value);
-               		file_put_contents("../private/passwd", $content);
-                	echo "New password edited\n";
-                	//require_once("../index.php"); redirige vers la page d'accueil
-           		}
-            	else
-                	echo "ERROR OLD PASSWORD UNVALID\n";
-            	return ;
-        	}
-        	else
-            	echo "ERROR WRONG USERNAME\n";
-          	$i++;
- 		}
-	}?>
-	</body>
-</html>
+	if (!is_valid_passwd($_POST['newpwd'])) {
+		$errors[] = 'Invalid password';
+		echo "Please secure your password";
+	}
+	else if ($_POST['newpwd'] !== $_POST['newpwd_confir']) {
+		$errors[] = 'Please enter the same password';
+		echo "Please enter the same password";
+	}
+	if (!empty($errors)) {
+		return ;
+	}
+	$new_pwd = password_hash($_POST['newpwd'], PASSWORD_DEFAULT);
+	$token = bin2hex(random_bytes(16));
+	$req = $pdo->prepare('UPDATE users SET password = :new_pwd, email_id = :token, activate = 0 WHERE email = :email');
+	$req->bindValue('new_pwd', $new_pwd);
+	$req->bindValue('token', $token);
+	$req->bindValue('email', $_POST['email']);
+	if ($req->execute() === false) {
+		echo "Database error";
+	}
+	ask_confirmation_newpwd($_POST['email'], $token);
+	return ;//new
+}
+?>

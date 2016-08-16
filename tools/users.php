@@ -69,7 +69,7 @@ function register_user($login, $passwd, $email) {
 
     $hashed = password_hash($passwd, PASSWORD_DEFAULT);
     $handle = $pdo->prepare('INSERT INTO Users ( login, password, email, email_id ) VALUES ( :login, :passwd, :email, :token )');
-    $token = bin2hex(random_bytes(16)); //email_id
+    $token = bin2hex(random_bytes(16));
     $handle->bindValue('login', $login);
     $handle->bindValue('passwd', $hashed);
     $handle->bindValue('email', $email);
@@ -92,11 +92,28 @@ function ask_confirmation($login, $email, $token) {
     mail($email, $subject, $content);
 }
 
+function ask_confirmation_newpwd($email, $token) {
+    $subject = 'Camagru: New password created';
+    /* port 8888 for home / port 8080 for school */
+    $link = 'http://localhost:8888/camagru/includes/activate_newpwd.php?token=' . $token;
+    $content = 'Please activate your new password by clicking on the following link ' . $link;
+    //<html></html> email form including vars like content + link
+    mail($email, $subject, $content);
+}
+
+function activate_newpwd($token){
+        global $pdo;
+
+        $req = $pdo->prepare('UPDATE Users SET email_id = NULL, activate = TRUE WHERE email_id = :token');
+        $req->bindValue('token', $token);
+        return ($req->execute());
+}
+
 function activate_email($login){
         global $pdo;
 
-        $handle = $pdo->prepare('UPDATE Users SET email_id = NULL, activate = TRUE WHERE login = :login');
-        $handle->bindValue('login', $login);
-        return ($handle->execute());
+        $req = $pdo->prepare('UPDATE Users SET email_id = NULL, activate = TRUE WHERE login = :login');
+        $req->bindValue('login', $login);
+        return ($req->execute());
 }
 ?>
