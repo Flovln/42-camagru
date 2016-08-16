@@ -1,5 +1,4 @@
 <?php
-include ('change_password.html');
 include ('../tools/users.php');
 
 if (isset($_POST['submit'], $_POST['email'], $_POST['newpwd'], $_POST['newpwd_confir'])) {
@@ -29,6 +28,6 @@ if (isset($_POST['submit'], $_POST['email'], $_POST['newpwd'], $_POST['newpwd_co
 		echo "Database error";
 	}
 	ask_confirmation_newpwd($_POST['email'], $token);
-	return ;//new
+	echo "An email has been sent to your email address";
 }
 ?>

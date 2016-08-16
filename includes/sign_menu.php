@@ -17,7 +17,7 @@
             <input type="submit" name="submit" value="Sign Up" id="signup_style"></input>
         </form>
         <br />
-        <form action="./includes/change_password.php" method="POST">
+        <form action="./includes/password_update.php" method="POST">
             <input type="submit" name="submit" value="Forgot your password?" id="forgot_pwd_style"></input>
         </form>
     </body>

@@ -12,11 +12,11 @@
 			<br />
 			New password:
 			<br /> 
-			<input type="newpwd" name="newpwd"/>
+			<input type="password" name="newpwd"/>
 			<br />
 			New password confirmation:
 			<br />
-			<input type="newpwd_confir" name="newpwd_confir"/>
+			<input type="password" name="newpwd_confir"/>
 			<br />
 			<input type="submit" name="submit" value="OK"/>
 		</form>

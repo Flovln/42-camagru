@@ -15,9 +15,9 @@ if (!isset($errors) || empty($errors))
 	else if (($user = $req->fetch(PDO::FETCH_OBJ)) === false) {
 		echo "Account not found";
 	}
-/*	else if ($user->activate === '1') {
+	else if ($user->activate === '1') {
 		echo "Password already validated";
-	}*/
+	}
 	else
 	{
 		if ($user->email_id === $_GET['token'])

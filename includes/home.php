@@ -6,6 +6,6 @@
   		<title>Home</title>
 	</head>
 	<body>
- 		<script src="webcam_bis.js"></script>
+ 		<script src="webcam.js"></script>
 	</body>		
 </html>
