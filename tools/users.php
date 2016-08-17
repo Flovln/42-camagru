@@ -96,7 +96,7 @@ function ask_confirmation_newpwd($email, $token) {
     $subject = 'Camagru: New password created';
     /* port 8888 for home / port 8080 for school */
     $link = 'http://localhost:8888/camagru/includes/activate_newpwd.php?token=' . $token;
-    $content = 'Please activate your new password by clicking on the following link ' . $link;
+    $content = 'Please activate your new password by visiting the following link ' . $link;
     //<html></html> email form including vars like content + link
     mail($email, $subject, $content);
 }

@@ -28,6 +28,6 @@ if (isset($_POST['submit'], $_POST['email'], $_POST['newpwd'], $_POST['newpwd_co
 		echo "Database error";
 	}
 	ask_confirmation_newpwd($_POST['email'], $token);
-	echo "An email has been sent to your email address";
+	echo "A message with a confirmation link has been sent to your email address. Please follow the link to activate your new password.";
 }
 ?>

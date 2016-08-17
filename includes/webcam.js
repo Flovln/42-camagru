@@ -7,7 +7,7 @@
       canvas       = document.querySelector('#canvas'),
       photo        = document.querySelector('#photo'),
       startbutton  = document.querySelector('#startbutton'),
-      width        = 320,
+      width        = 450,
       height       = 0,
       x            = 0;
 
