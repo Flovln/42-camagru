@@ -59,7 +59,7 @@
   }
 
   startbutton.addEventListener('click', function(ev){
-      takepicture();
+    takepicture();
     ev.preventDefault();
   }, false);
 
