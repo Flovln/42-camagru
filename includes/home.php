@@ -1,4 +1,5 @@
 <?php
+//	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,20 +13,36 @@
 		<div id="wrapper">
 			<div id="header">
 				<img src="../pictures/Camagru_logo.png" title="camagru" id="logo">
-				<input type="submit" name="submit" value="Logout" id="logout"></input>
+		<!--		<?php echo "Welcome " . $_SESSION['login'];?> -->
+				<form action="logout.php" method="POST">
+					<input type="submit" name="submit" value="Logout" id="logout"></input>
+				</form>
 			</div>
 			<div id="home_main">
-				<img src="../filters/test.png" width="360px" id="filter1" onClick="selectfilter(this)">
+				<div id="filter-container">
+					<img src="../filters/test.png" width="360px" id="filter" onClick="selectfilter(this)">
+					<img src="../filters/filter1.png" width="360px" id="filter" onClick="selectfilter(this)">
+					<img src="../filters/filter2.png" width="360px" id="filter" onClick="selectfilter(this)">
+				</div>
 				<div id="webcam">
-					<video id="video"></video>
-					<button id="startbutton">Prendre une photo</button>
-					<canvas id="canvas"></canvas>
-					<script type="text/javascript" src="webcam.js"></script>
+					<div id="webcam-container">
+						<video id="video"></video> 
+						</br>
+						<button id="startbutton">Prendre une photo</button>
+						</br>
+						<canvas id="canvas"></canvas>
+						<script type="text/javascript" src="webcam.js"></script>
+					</div>
+					<div id="webcam-button">
+				<!--	<button id="startbutton">Prendre une photo</button> -->
+					</div>
 				</div>
 			</div>
 			<div id="home_side">
 			</div>
-			<div id="home_footer"></div>
+<!--			<?php
+		//		include ('footer.php');
+			?> -->
   		</div>
 	</body>		
 </html>

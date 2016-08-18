@@ -13,7 +13,7 @@ session_start();
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<img src="./pictures/Camagru_logo.png" title="camagru" id="logo">
+			<img src="pictures/Camagru_logo.png" title="camagru" id="logo">
 		</div>
 		<div id="main_content">
 			<img src="./pictures/Sf_bay.jpg" id="main_img">
@@ -21,10 +21,7 @@ session_start();
 				<?php require_once("./includes/sign_menu.php"); ?>
 			</div>
 		</div>
-		<div id="bottom_line"></div>
-		<div id="footer">
-			fviolin&copy; 2016
-		</div>
+		<?php include ('includes/footer.php'); ?>
 	</div>
 </body>
 </html>
