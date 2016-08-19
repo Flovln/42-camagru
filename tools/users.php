@@ -87,7 +87,7 @@ function ask_confirmation($login, $email, $token) {
     $subject = 'Camagru: Please verify your account';
     /* port 8888 for home / port 8080 for school */
     $link = 'http://localhost:8888/camagru/includes/activate_account.php?login=' . $login .'&token=' . $token;
-    $content = 'You can confirm your account email through the link below: ' . $link;
+    $content = 'You can confirm your account through the link below: ' . $link;
     //<html></html> email form including vars like content + link
     mail($email, $subject, $content);
 }
@@ -104,7 +104,7 @@ function ask_confirmation_newpwd($email, $token) {
 function activate_newpwd($token){
         global $pdo;
 
-        $req = $pdo->prepare('UPDATE Users SET email_id = NULL, activate = TRUE WHERE email_id = :token');
+        $req = $pdo->prepare('UPDATE Users SET email_id = NULL, activated = TRUE WHERE email_id = :token');
         $req->bindValue('token', $token);
         return ($req->execute());
 }
@@ -112,7 +112,7 @@ function activate_newpwd($token){
 function activate_email($login){
         global $pdo;
 
-        $req = $pdo->prepare('UPDATE Users SET email_id = NULL, activate = TRUE WHERE login = :login');
+        $req = $pdo->prepare('UPDATE Users SET email_id = NULL, activated = TRUE WHERE login = :login');
         $req->bindValue('login', $login);
         return ($req->execute());
 }

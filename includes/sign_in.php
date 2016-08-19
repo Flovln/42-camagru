@@ -25,7 +25,7 @@ if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
         /*********************************/
 
         $user = $req->fetch(PDO::FETCH_OBJ);
-        if ($user->activate === '0') {
+        if ($user->activated === '0') {
             echo "Please make sure your account is activated before signing in";
             return ;
         }

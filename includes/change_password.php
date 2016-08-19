@@ -20,7 +20,7 @@ if (isset($_POST['submit'], $_POST['email'], $_POST['newpwd'], $_POST['newpwd_co
 	}
 	$new_pwd = password_hash($_POST['newpwd'], PASSWORD_DEFAULT);
 	$token = bin2hex(random_bytes(16));
-	$req = $pdo->prepare('UPDATE users SET password = :new_pwd, email_id = :token, activate = 0 WHERE email = :email');
+	$req = $pdo->prepare('UPDATE users SET password = :new_pwd, email_id = :token, activated = 0 WHERE email = :email');
 	$req->bindValue('new_pwd', $new_pwd);
 	$req->bindValue('token', $token);
 	$req->bindValue('email', $_POST['email']);
