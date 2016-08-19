@@ -28,11 +28,11 @@
 						<img src="../filters/filter2.png" width="" id="filter"> <!-- onClick="select_filter(../filters/filter2.png)"> -->
 					</form>
 			</div>
-			<div id="img-upload" method="post" enctype="multipart/form-data" action="upload_img.php">
-				<form>
-					<label>Upload an image</label>
-					<input type="file" name="file" id="imageLoader"/>
-					<input type="submit" name="upload" value="Uploader">
+			<div id="img-upload" method="post" enctype="multipart/form-data">
+				<form action="upload.php" method="post" enctype="multipart/form-data">
+    				Select image to upload:
+    				<input type="file" name="fileToUpload" id="fileToUpload">
+    				<input type="submit" name="submit" value="Upload Image">
 				</form>
 			</div>
 			<div id="webcam-container">
