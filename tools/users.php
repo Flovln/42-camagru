@@ -1,19 +1,8 @@
 <?php
-include('../config/database.php');
-
-// ----------------------------- ---------------------------------- //
-//to be move in application.php
-try {
-    $pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-}
-catch (PDOException $e) {
-    die ('Connexion SQL impossible');
-}
-
-// ----------------------------- --------------------------------- //
+include('../config/application.php');
 
 function is_valid_login($login) {
-    return (preg_match('/^[a-zA-Z]{5,12}$/', $login)); //add at least one int
+    return (preg_match('/^[a-zA-Z]{5,12}$/', $login)); //add at least one int + check maj and min letters
 }
 
 function is_valid_email($email) {
@@ -22,7 +11,6 @@ function is_valid_email($email) {
 
 function is_valid_passwd($passwd) {
     return (preg_match('/^[a-zA-Z]{5,12}$/', $passwd)); //add at least one int
-//  return (true);
 }
 
 function user_sign_in($login, $password)

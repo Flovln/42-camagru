@@ -1,5 +1,26 @@
 <?php
-$target_dir = "uploads/";
+include ('../tools/users.php');
+
+if (isset($_POST['submit']))
+{
+ $file = rand(1000,100000)."-".$_FILES['fileToUpload']['name'];
+ $file_loc = $_FILES['fileToUpload']['tmp_name'];
+ $file_size = $_FILES['fileToUpload']['size'];
+ $file_type = $_FILES['fileToUpload']['type'];
+ $folder="uploads/";
+ 
+move_uploaded_file($file_loc,$folder.$file);
+$req = $pdo->prepare('INSERT INTO Images ( file) VALUES ( :file)');
+$req->bindValue(':file', $file);
+echo $file_type . " ";
+echo $file_size . " ";
+/*$req->bindValue(':type', $file_type);*/
+/*$req->bindValue(':size', $file_size);*/
+if ($req->execute() === false) {
+        echo "req error";
+    } 
+}
+/*$target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -52,5 +73,5 @@ if ($uploadOk == 0) {
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
-}
+}*/
 ?>

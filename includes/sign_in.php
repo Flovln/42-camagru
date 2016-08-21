@@ -1,5 +1,6 @@
 <?php
 include ('../tools/users.php');
+session_start();
 
 if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
 {
@@ -29,7 +30,8 @@ if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
             echo "Please make sure your account is activated before signing in";
             return ;
         }
-        $_SESSION['login'] = $login;
+        $_SESSION['log_in'] = $login;
+        $_SESSION['auth'] = $user;
         header("Location: home.php");
     }
     else {
