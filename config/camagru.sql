@@ -9,9 +9,10 @@ CREATE TABLE `Users` (
 
 CREATE TABLE `Images` (
 	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`file` varchar(255) NOT NULL,
-	`type` varchar(255) NOT NULL,
-	`size` int NOT NULL
+	`user` varchar(255) NOT NULL,
+	`user_id` int(10) unsigned NOT NULL, 
+	`path` varchar(255) NOT NULL,
+	`date` DATETIME NOT NULL
 );
 
 CREATE TABLE `Likes` (

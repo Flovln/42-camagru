@@ -13,6 +13,21 @@ function is_valid_passwd($passwd) {
     return (preg_match('/^[a-zA-Z]{5,12}$/', $passwd)); //add at least one int
 }
 
+function get_user_id($login)
+{
+    global $pdo;
+
+    $req = $pdo->prepare('SELECT id FROM users WHERE login = :login');
+    $req->bindValue('login', $login);
+    if ($req->execute() === false) {
+        return (false);
+    }
+    if (($res = $req->fetch(PDO::FETCH_OBJ)) === false) {
+        return (false);
+    }
+    return ($res->id);
+}
+
 function user_sign_in($login, $password)
 {
     global $pdo;
