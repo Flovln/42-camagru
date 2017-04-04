@@ -1,6 +1,6 @@
 <div align="center">
   <img src="./pictures/Sf_bay.jpg" id="main_img">
-  <form action=actions/sign_in.php" method="POST">
+  <form action="actions/sign_in.php" method="POST">
     Username:
     <br />
     <input type="login" name="login" class="enter_style"/>

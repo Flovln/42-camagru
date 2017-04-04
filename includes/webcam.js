@@ -59,6 +59,7 @@
   }
 
   startbutton.addEventListener('click', function(ev){
+    console.log("YOOO");
     takepicture();
     ev.preventDefault();
   }, false);
