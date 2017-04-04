@@ -12,11 +12,7 @@
     <input type="submit" name="submit" value="Sign In" class="submit_style" />
     <br />
   </form>
-  <form action="./includes/sign_up.php" method="POST">
-    <input type="submit" name="submit" value="Sign Up" id="signup_style"></input>
-  </form>
   <br />
-  <form action="./includes/forgot_pwd.php" method="POST">
-    <input type="submit" name="submit" value="Forgot your password?" id="forgot_pwd_style"></input>
-  </form>
+  <div><a id="forgot_pwd_style" href="includes/forgot_pwd.php">Forgot password ? </a></div><br />
+  <div><a id="signup_style" href="includes/sign_up.php">Sign Up </a></div>
 </div>

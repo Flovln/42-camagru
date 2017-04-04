@@ -20,7 +20,5 @@
         } ?>
     </div>
     <? require_once 'includes/footer.php'; ?>
-  <script type="text/javascript" src="includes/webcam.js"></script>
-  <script type="text/javascript" src="includes/application.js"></script>
   </body>
 </html>

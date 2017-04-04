@@ -1,12 +1,12 @@
 <div id="main-container">
   <div id="filter-container">
     <form>
-      <input type="radio" name="filter" value="filters/test.png">
-      <img src="../filters/test.png" width="" id="filter"> <!-- onClick="select_filter(../filters/test.png)"> -->
-      <input type="radio" name="filter" value="filters/filter1.png">
-      <img src="../filters/filter1.png" width="" id="filter"> <!-- onClick="select_filter(../filters/filter1.png)"> -->
-      <input type="radio" name="filter" value="filters/filter2.png">
-      <img src="../filters/filter2.png" width="" id="filter"> <!-- onClick="select_filter(../filters/filter2.png)"> -->
+      <input type="radio" name="filter" value="test.png">
+      <img src="filters/test.png" width="" id="filter"> <!-- onClick="select_filter(../filters/test.png)"> -->
+      <input type="radio" name="filter" value="filter1.png">
+      <img src="filters/filter1.png" width="" id="filter"> <!-- onClick="select_filter(../filters/filter1.png)"> -->
+      <input type="radio" name="filter" value="filter2.png">
+      <img src="filters/filter2.png" width="" id="filter"> <!-- onClick="select_filter(../filters/filter2.png)"> -->
     </form>
   </div>
   <div id="webcam-container">
@@ -27,3 +27,5 @@
 <div id="side-container">
   Side container
 </div>
+<script type="text/javascript" src="includes/webcam.js"></script>
+<script type="text/javascript" src="includes/application.js"></script>
