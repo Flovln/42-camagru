@@ -11,8 +11,9 @@ if ($_POST['submit'] === "OK" && $_POST['login'] && $_POST['passwd'] && $_POST['
 	if (!$wrong_login && !$wrong_email && !$wrong_passwd && !$login_exists && !$email_exists) {
    		$success = register_user($_POST['login'], $_POST['passwd'], $_POST['email']);
    		// print message saying an email has been sent before redirecting to index page
-   		echo "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account";
-  	//	header('Location: ../index.php');
+      //JS message
+      header( "refresh:2;url= ../index.php" );
+      echo "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account";
   	}
 }
 else

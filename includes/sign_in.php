@@ -4,17 +4,16 @@ session_start();
 
 if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
 {
-   if (user_sign_in($_POST['login'], $_POST['passwd']) === true)
-    {
-        $login = $_POST['login'];
-        $req = $pdo->prepare('SELECT * FROM users WHERE login = :login');
+  if (user_sign_in($_POST['login'], $_POST['passwd']) === true)
+  {
+    $login = $_POST['login'];
+    $req = $pdo->prepare('SELECT * FROM users WHERE login = :login');
         
-        /* First syntax for req->execute */
+    /* First syntax for req->execute */
+    $req->bindValue(':login', $login);
+    $req->execute();
 
-        $req->bindValue(':login', $login);
-        $req->execute();
-
-        /* Second syntax for req->execute */
+    /* Second syntax for req->execute */
 
     //  $req->execute([":login" => $_POST['login']]);
 
@@ -25,18 +24,18 @@ if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
 
         /*********************************/
 
-        $user = $req->fetch(PDO::FETCH_OBJ);
-        if ($user->activated === '0') {
-            echo "Please make sure your account is activated before signing in";
-            return ;
-        }
-        $_SESSION['log_in'] = $login;
-        $_SESSION['auth'] = $user;
-        header("Location: home.php");
+    $user = $req->fetch(PDO::FETCH_OBJ);
+    if ($user->activated === '0') {
+      echo "Please make sure your account is activated before signing in";
+      return ;
     }
-    else {
-        echo "Wrong username or password, please try again";
+    $_SESSION['login'] = $login;
+    $_SESSION['auth'] = $user;
+    header("Location: ../index.php");
+  }
+  else {
+    echo "Wrong username or password, please try again";
     //  header("Location: ../index.php");
-    }
+  }
 }
 ?>

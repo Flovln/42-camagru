@@ -3,20 +3,20 @@ require_once('database.php');
 $sql = file_get_contents('camagru.sql');
 
 try {
-	$pdo = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
-	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $pdo = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	$dbname = "camagru";
-	$pdo->query("CREATE DATABASE IF NOT EXISTS $dbname");
-	$pdo->query("use $dbname");
-	if ($pdo !== false && $pdo->exec($sql) === false)
-    	$messages[] = 'Error while installing database';
+  $dbname = "camagru";
+  $pdo->query("CREATE DATABASE IF NOT EXISTS $dbname");
+  $pdo->query("use $dbname");
+  if ($pdo !== false && $pdo->exec($sql) === false)
+      $messages[] = 'Error while installing database';
     else
-    	$messages[] = "Database and tables successfully installed";
+      $messages[] = "Database and tables successfully installed";
 }
 
 catch(PDOException $e) {
-	$messages[] = $e->getMessage();
+  $messages[] = $e->getMessage();
 }
 ?>
 
@@ -31,7 +31,7 @@ catch(PDOException $e) {
             <?php foreach ($messages as $message): ?>
                 <p><?= $message; ?></p>
             <?php
-            	endforeach;
-        	endif;?>
+              endforeach;
+          endif;?>
     </body>
 </html>

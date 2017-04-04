@@ -4,7 +4,10 @@
 * * Application defines
 */
 
-define('APPLICATION_ADDR', 'http://localhost:8888/camagru');
+//Home
+/*define('APPLICATION_ADDR', 'http://localhost:8888/camagru');*/
+//School
+define('APPLICATION_ADDR', 'http://localhost:8080/camagru');
 define('IMAGES_DIR', 'images/');
 define('ROOT', 'index.php');
 
