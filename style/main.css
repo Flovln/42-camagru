@@ -126,10 +126,14 @@ body {
 	margin-left: 30%;
 }
 
-#filter {
+.filters {
  	width: 15%;
  	height: 15%;
  	padding: 10px;
+}
+
+.filters:hover {
+	border: 2px solid black;
 }
 
 #webcam-container {
@@ -162,6 +166,7 @@ body {
 	font-family: sans-serif;
 	font-size: 12px;
 }
+
 #logout {
  	float: right;
  	margin-top: 20px;
