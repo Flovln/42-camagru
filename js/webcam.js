@@ -52,14 +52,14 @@
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL('image/png');
-//    photo.setAttribute('src', data);
+    photo.setAttribute('src', data);
     xhttp.open("POST", "./stock.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("ajaximg=" + data);
   }
 
   startbutton.addEventListener('click', function(ev){
-    console.log("click : " + ev);
+    console.log("YOOO");
     takepicture();
     ev.preventDefault();
   }, false);
