@@ -9,12 +9,12 @@
 </div>
 <div align="center">
 	<form action="../actions/create_account.php" method="POST">
-	    Identifiant: <input type="login" name="login"/>
+	    Identifiant: <input type="login" name="login" required />
 	    <br/>
-	    Mot de passe: <input type="password" name="passwd"/>
+	    Mot de passe: <input type="password" name="passwd" required />
 	    <br/>
-	    Email: <input type="email" name="email"></input>
+	    Email: <input type="email" name="email" required></input>
 	    <br/>
-	    <input type="submit" name="submit" value="OK"/>
+	    <input type="submit" name="submit" value="OK" required />
 	</form>
 </div>
