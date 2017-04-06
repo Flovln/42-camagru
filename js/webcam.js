@@ -56,7 +56,6 @@
 //    photo.setAttribute('src', data);
 
     var filter = selectedRadioButton();
-    console.log("filter ->" + filter);
 
     xhttp.open("POST", "actions/save_picture.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
