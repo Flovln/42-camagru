@@ -1,8 +1,8 @@
 function selectFilter(choose)
 {
-  console.log('in selectFilter');
+  console.log('in selectFilter : ' + choose.src);
   img_filtre = choose;
-  alert(img_filtre);
+//  alert(img_filtre);
   var elem = document.getElementById('startbutton');
   elem.style.display = '';
 /*  try {
