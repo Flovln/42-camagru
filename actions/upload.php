@@ -24,6 +24,7 @@ if (isset($_POST['submit']))
 
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+//ERROR ARRAY INSTEAD
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
@@ -64,6 +65,7 @@ if ($uploadOk == 0) {
 } else {
 // else if everything is ok, try to upload file
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      //CREATE PICTURE ../tools/images.php
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
