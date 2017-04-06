@@ -30,6 +30,7 @@ if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
       return ;
     }
     $_SESSION['login'] = $login;
+    $_SESSION['user_id'] = $user->id;
     $_SESSION['auth'] = $user;
     header("Location: ../index.php");
   }

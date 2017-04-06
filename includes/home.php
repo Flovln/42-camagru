@@ -2,16 +2,24 @@
   <form ><!--action="./index.php?page=create" method="post" name="snapshot"-->
     <div id="filter-container">
       <label>
-        <input id="r1" type="radio" name="filter" value="test.png" required>
-        <img id="fil1" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/test.png">
+        <input id="r1" type="radio" name="filter" value="filter1.png" required>
+        <img id="fil1" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter1.png">
       </label>
       <label>
-        <input id="r2" type="radio" name="filter" value="filter1.png" required>
-        <img id="fil2" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter1.png">
+        <input id="r2" type="radio" name="filter" value="filter2.png" required>
+        <img id="fil2" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter2.png">        
       </label>
       <label>
-        <input id="r3" type="radio" name="filter" value="filter2.png" required>
-        <img id="fil3" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter2.png">        
+        <input id="r3" type="radio" name="filter" value="filter3.png" required>
+        <img id="fil3" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter3.png">
+      </label>
+      <label>
+        <input id="r4" type="radio" name="filter" value="filter4.png" required>
+        <img id="fil4" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter4.png">
+      </label>
+      <label>
+        <input id="r5" type="radio" name="filter" value="filter4.png" required>
+        <img id="fil5" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter5.png">
       </label>
     </div>
     <div id="webcam-container">
