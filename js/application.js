@@ -30,5 +30,5 @@ function selectedRadioButton()
     return ("filter1.png");
   else if (document.getElementById("r3").checked == true)
     return ("filter2.png");
-  return (false);
+  return ("");
 }
