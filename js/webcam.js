@@ -53,8 +53,6 @@
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
 
     var data = canvas.toDataURL('image/png');
-//    photo.setAttribute('src', data);
-
     var filter = selectedRadioButton();
 
     xhttp.open("POST", "actions/save_picture.php", true);
@@ -62,8 +60,8 @@
     xhttp.send("img_data=" + data + "&filter=" + filter);
   }
 
+  //on click event button for webcam
   startbutton.addEventListener('click', function(ev){
-    //here we handle the "take a picture" onclick event 
     takepicture();
     ev.preventDefault();
   }, false);

@@ -40,7 +40,7 @@ function save_picture($user_id, $image)
 	{
 		return (false);
 	}
-	$handle = $pdo->prepare('INSERT INTO images ( `path`, `user_id` ) VALUES ( :image, :user_id );');
+	$handle = $pdo->prepare('INSERT INTO images ( `user_id`, `path`, `timestamp` ) VALUES ( :user_id, :image, '.time().' );');
     $handle->bindValue('path', $image);
     $handle->bindValue('user_id', $user_id);
     if ($handle->execute() === false)
