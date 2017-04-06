@@ -1,6 +1,37 @@
 <?php
 include('../config/application.php');
 
+function create_picture($img_data, $filter, $user_id) {
+    //Get the img and decode it
+    $img = !empty($img_data) ? $img_data : die("No image was taken");
+    $img = str_replace('data:image/png;base64,', '', $img);
+    $img = str_replace(' ', '+', $img);
+    $fileData = base64_decode($img);
+
+    //filter to be applied 
+    $src = imagecreatefrompng('../filters/'.$filter);
+    //webcam picture
+    $dest = imagecreatefromstring($fileData);
+
+    //Get width and height of bottom layer
+    $dest_width = imagesx($dest);
+    $dest_height = imagesy($dest);
+
+    //apply filter on bottom picture
+    imagecopy($dest, $src, 0, 0, 0, 0, $dest_width, $dest_height);
+
+    //saving in directory
+    if (!file_exists('../user_imgs') && !is_dir('../user_imgs')) {
+        mkdir('../user_imgs');
+    }
+    $imgPath = '../user_imgs/'.$user_id.'_'.uniqid().'.png';
+    imagepng($dest, $imgPath);
+    imagedestroy($dest);
+
+    //save img in DB
+    save_picture($user_id, $imgPath);
+}
+
 function save_picture($user_id, $image)
 {
 	global $pdo;
