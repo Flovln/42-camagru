@@ -6,7 +6,7 @@
 	}
 	$img = !empty($_POST['img_data']) ? $_POST['img_data'] : die("No image was taken");
 	//here we give a name to the image
-//	$imgName = 'webcam.png';
+	$imgName = 'webcam.png';
 	$img = str_replace('data:image/png;base64,', '', $img);
 	$img = str_replace(' ', '+', $img);
 	$fileData = base64_decode($img);
@@ -27,7 +27,8 @@
 	if (!file_exists('../user_imgs') && !is_dir('../user_imgs')) {
 		mkdir('../user_imgs');
 	}
-	$imgPath = '../user_imgs/'.$_SESSION['login'].'/'.uniqid().'.png';
+//	$imgPath = '../user_imgs/'.$_SESSION['login'].'/'.uniqid().'.png';
+	$imgPath = '../user_imgs/toto.png';
 	imagepng($dest, $imgPath);
 	imagedestroy($dest);
 //	file_put_contents('../user_imgs/'.$imgName, $fileData);
