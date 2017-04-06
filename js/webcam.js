@@ -52,10 +52,28 @@
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL('image/png');
+
+    var radio = selectedRadioButton();
+    console.log("radio ->" + radio);
+
     photo.setAttribute('src', data);
     xhttp.open("POST", "./stock.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("ajaximg=" + data);
+/*    var xhttp = get_HttpRequest();
+
+    if (xhttp.readyState == 0 || xhttp.readyState == 4) 
+    {
+      xhttp.onreadystatechange = updateThumbnailSection;
+      xhttp.open("POST", "./index.php?page=create", true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      var radio = selectedRadioButton();
+      console.log("radio ->" + radio);
+      xhttp.send("img_data=" + data + "&filter=" + radio);
+    }
+    else 
+      setTimeout('takepicture()', 500);
+    }*/
   }
 
   startbutton.addEventListener('click', function(ev){

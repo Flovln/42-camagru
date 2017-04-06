@@ -89,7 +89,7 @@ function register_user($login, $passwd, $email) {
 function ask_confirmation($login, $email, $token) {
   $subject = 'Camagru: Please verify your account';
     /* port 8888 for home / port 8080 for school */
-  $link = 'http://localhost:8080/camagru/includes/activate_account.php?login=' . $login .'&token=' . $token;
+  $link = 'http://localhost:8080/camagru/actions/activate_account.php?login=' . $login .'&token=' . $token;
   $content = 'You can confirm your account through the link below: ' . $link;
     //<html></html> email form including vars like content + link
   mail($email, $subject, $content);
@@ -98,7 +98,7 @@ function ask_confirmation($login, $email, $token) {
 function ask_confirmation_newpwd($email, $token) {
   $subject = 'Camagru: New password created';
     /* port 8888 for home / port 8080 for school */
-  $link = 'http://localhost:8888/camagru/includes/activate_newpwd.php?token=' . $token;
+  $link = 'http://localhost:8888/camagru/actions/activate_newpwd.php?token=' . $token;
   $content = 'Welcome ' . $email . ' You can confirm your new password through the link below: ' . $link;
     //<html></html> email form including vars like content + link
   mail($email, $subject, $content);
