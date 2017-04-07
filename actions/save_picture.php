@@ -7,9 +7,9 @@
 		exit;
 	} else {
 		$img_data = $_POST['img_data'];
-		$filter = $_POST['filter'];
+		$filterPath = '../filters/'.$_POST['filter'];
 		$user_id = $_SESSION['user_id'];
 
-		create_picture($img_data, $filter, $user_id);
+		create_picture($img_data, $filterPath, $user_id);
 	}
 ?>

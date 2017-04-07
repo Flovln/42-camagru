@@ -3,13 +3,16 @@ include('../config/application.php');
 
 function create_picture($img_data, $filter, $user_id) {
     //Get the img and decode it
+    echo 'img_data : '.$img_data.'  ';
+    echo 'filter : '.$filter.'  ';
+    echo 'user_id : '.$user_id.'  ';
     $img = !empty($img_data) ? $img_data : die("No image was taken");
     $img = str_replace('data:image/png;base64,', '', $img);
     $img = str_replace(' ', '+', $img);
     $fileData = base64_decode($img);
 
     //filter to be applied 
-    $src = imagecreatefrompng('../filters/'.$filter);
+    $src = imagecreatefrompng($filter);
     //webcam picture
     $dest = imagecreatefromstring($fileData);
 

@@ -5,7 +5,6 @@ include ('../tools/images.php');
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-echo 'filter : '.$_POST['uploadFilter'];
 $error = array();
 /*
 if (isset($_POST['upload_submit'])) {
@@ -33,30 +32,35 @@ if(isset($_POST["upload_submit"])
   && isset($_POST["uploadFilter"])
   && !empty($_POST["uploadFilter"])) {
 
-  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-  } else {
+  $checkImg = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  $checkFilter = getimagesize($_POST["uploadFilter"]);
+  
+  if ($checkImg === false || $checkFilter === false) {
+    echo 'error 1';
     array_push($error, "File is not an image");
   }
 }
 
 // Check if file already exists
 if (file_exists($target_file)) {
+    echo 'error 2';
   array_push($error, "Sorry, file already exists.");
 }
 
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo 'error 3';
   array_push($error, "Sorry, your file is too large");
 }
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+    echo 'error 4';
   array_push($error, "Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
 }
 
 if ($error) {
+    echo 'error 5';
   array_push($error, "Sorry, your file was not uploaded");
 } else {
   $imgData = $_FILES["fileToUpload"]["tmp_name"];
