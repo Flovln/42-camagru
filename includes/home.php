@@ -26,7 +26,7 @@
       <div id="webcam">
         <video id="video"></video> 
         <canvas id="canvas"></canvas>
-        <button id="startbutton">Take a picture</button>
+        <button id="startbutton" disabled>Take a picture</button>
       </div>
     </div>
   </form>
