@@ -44,12 +44,10 @@
 <div id="side-container">
   Side container / Gallery
   <?
-    include('config/application.php');
-
     function get_user_images($userId)
     {
         global  $pdo;
-
+      
         if (!isset($_SESSION['auth']))
             return (false);
         //use AJAX to automatically update user gallery content
@@ -69,7 +67,8 @@
 
     if ($images) {
       for ($i=0; $i < 4; $i++) {
-        echo "<div class=img_snap_container ><img class=image_snap src='".$images[$i]->path."'alt='".$images[$i]->id."'></div>";    
+        echo "<div class=img_snap_container ><img class=image_snap src='".$images[$i]->path."'alt='".$images[$i]->id."'></div>";
+        echo "<a href='index.php?id=".$images[$i]->id."' ><button class=delbutton name=delete_snap>Delete</button></a>";
       }
     } else {
       echo '<p>No pictures on this profile</p>';

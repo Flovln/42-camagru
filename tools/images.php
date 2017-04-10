@@ -51,7 +51,7 @@ function save_picture($user_id, $image)
   }
   return (true);
 }
-
+/* 
 function get_user_images($userId)
 {
     global  $pdo;
@@ -66,5 +66,5 @@ function get_user_images($userId)
 //    if (empty($images))
 //        return (false);
     return ($images);
-}
+}*/
 ?>

@@ -1,6 +1,18 @@
 <?
   include('config/application.php');
   include('includes/header.php');
+
+  if (isset($_GET['id'])) {
+    global  $pdo;
+
+    $imgId = $_GET['id'];
+    $req = $pdo->prepare('DELETE FROM Images WHERE id = :imgId');
+    $req->bindValue('imgId', $imgId);
+
+    if($req->execute() === false) {
+      echo "Error deleting image";
+    }
+  }
 ?>
     <div id="wrapper">
       <?
