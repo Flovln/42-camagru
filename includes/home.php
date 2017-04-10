@@ -64,10 +64,11 @@
     }
     $images = get_user_images($_SESSION['user_id']);
     $imagesNb = count($images);
+    //Use AJAX to handle pagination
     $pageNb = ceil($imagesNb/5);
 
     if ($images) {
-      for ($i=0; $i < $imagesNb; $i++) {
+      for ($i=0; $i < 4; $i++) {
         echo "<div class=img_snap_container ><img class=image_snap src='".$images[$i]->path."'alt='".$images[$i]->id."'></div>";    
       }
     } else {
