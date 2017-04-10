@@ -63,10 +63,11 @@
         return ($images);
     }
     $images = get_user_images($_SESSION['user_id']);
-    $length = count($images);
-    
+    $imagesNb = count($images);
+    $pageNb = ceil($imagesNb/5);
+
     if ($images) {
-      for ($i=0; $i < $length; $i++) {
+      for ($i=0; $i < $imagesNb; $i++) {
         echo "<div class=img_snap_container ><img class=image_snap src='".$images[$i]->path."'alt='".$images[$i]->id."'></div>";    
       }
     } else {
