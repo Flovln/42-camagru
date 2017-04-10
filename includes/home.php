@@ -42,7 +42,7 @@
   <script type="text/javascript" src="js/webcam.js"></script>
 </div>
 <div id="side-container">
-  Side container / Gallery
+</br>
   <?
     function get_user_images($userId)
     {
@@ -66,9 +66,9 @@
     $pageNb = ceil($imagesNb/5);
 
     if ($images) {
-      for ($i=0; $i < 4; $i++) {
-        echo "<div class=img_snap_container ><img class=image_snap src='".$images[$i]->path."'alt='".$images[$i]->id."'></div>";
-        echo "<a href='index.php?id=".$images[$i]->id."' ><button class=delbutton name=delete_snap>Delete</button></a>";
+      for ($i=0; $i < $imagesNb; $i++) {
+        echo "<div class=img_snap_container ><img class=image_snap src='".$images[$i]->path."'alt='".$images[$i]->id."'></br>
+        <a href='index.php?id=".$images[$i]->id."' ><button class=delbutton name=delete_snap>Delete</button></a></div>";
       }
     } else {
       echo '<p>No pictures on this profile</p>';

@@ -178,6 +178,27 @@ body {
 	overflow-y: hidden;
 }
 
+.img_gallery {
+/*	height: 30%;
+	width: 30%;*/
+	margin: 5px;
+	padding: 2px;
+	border-style: solid;
+	border-color: #000000;
+	border-width: 1px;
+}
+
+.image_gallery {
+	height: 30%;
+	width: 30%;
+	margin: 5px;
+	padding:5px;
+}
+
+.delbutton {
+	text-align: center;
+}
+
 #logout {
  	float: right;
  	margin-top: 20px;

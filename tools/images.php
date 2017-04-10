@@ -37,12 +37,12 @@ function create_picture($img_data, $filter, $user_id) {
 
 function save_picture($user_id, $image)
 {
-	global $pdo;
+  global $pdo;
 
-	if ($user_id === false) {
-		return (false);
-	}
-	$handle = $pdo->prepare('INSERT INTO images ( `user_id`, `path`, `captureTime` ) VALUES ( :user_id, :image, :captureTime )');
+  if ($user_id === false) {
+    return (false);
+  }
+  $handle = $pdo->prepare('INSERT INTO images ( `user_id`, `path`, `captureTime` ) VALUES ( :user_id, :image, :captureTime )');
   $handle->bindValue('user_id', $user_id);
   $handle->bindValue('image', $image);
   $handle->bindValue('captureTime', date("Y-m-d H:i:s", time()));
@@ -58,7 +58,7 @@ function get_user_images($userId)
 
     if (!isset($_SESSION['auth'])) //auth is an object pointing to the DB table, we can access all elements in the table through it
         return (false);
-    $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = ? ORDER BY date DESC');
+    $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = ? ORDER BY captureTime DESC');
     if ($req->execute() === false) {
       return (false);
     }
