@@ -43,4 +43,34 @@
 </div>
 <div id="side-container">
   Side container / Gallery
+  <?
+    include('config/application.php');
+
+    function get_user_images($userId)
+    {
+        global  $pdo;
+
+        if (!isset($_SESSION['auth']))
+            return (false);
+        //use AJAX to automatically update user gallery content
+        $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = :userId ORDER BY captureTime DESC');
+        $req->bindValue('userId', $userId);
+
+        if ($req->execute() === false) {
+          return (false);
+        }
+        $images = $req->fetchAll(PDO::FETCH_OBJ);
+        return ($images);
+    }
+    $images = get_user_images($_SESSION['user_id']);
+    $length = count($images);
+    
+    if ($images) {
+      for ($i=0; $i < $length; $i++) {
+        echo "<div class=img_snap_container ><img class=image_snap src='".$images[$i]->path."'alt='".$images[$i]->id."'></div>";    
+      }
+    } else {
+      echo '<p>No pictures on this profile</p>';
+    }
+  ?>
 </div>

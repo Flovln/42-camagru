@@ -27,8 +27,8 @@ function create_picture($img_data, $filter, $user_id) {
     if (!file_exists('../user_imgs') && !is_dir('../user_imgs')) {
         mkdir('../user_imgs');
     }
-    $imgPath = '../user_imgs/'.$user_id.'_'.uniqid().'.png';
-    imagepng($dest, $imgPath);
+    $imgPath = 'user_imgs/'.$user_id.'_'.uniqid().'.png';
+    imagepng($dest, '../'.$imgPath);
     imagedestroy($dest);
 
     //save img in DB
@@ -39,35 +39,32 @@ function save_picture($user_id, $image)
 {
 	global $pdo;
 
-  echo 'user id -> '.$user_id;
-  echo "\n";
-  echo 'image path -> '.$image;
-  $captureDate = date("Y-m-d H:i:s", time());
-	if ($user_id === false)
-	{
+	if ($user_id === false) {
 		return (false);
 	}
-	$handle = $pdo->prepare('INSERT INTO images ( `user_id`, `path`, `date` ) VALUES ( :user_id, :image, :captureDate )');
+	$handle = $pdo->prepare('INSERT INTO images ( `user_id`, `path`, `captureTime` ) VALUES ( :user_id, :image, :captureTime )');
   $handle->bindValue('user_id', $user_id);
   $handle->bindValue('image', $image);
-  $handle->bindValue('captureDate', $captureDate);
+  $handle->bindValue('captureTime', date("Y-m-d H:i:s", time()));
   if ($handle->execute() === false) {
     return (false);
   }
   return (true);
 }
 
-function get_user_images($login)
+function get_user_images($userId)
 {
     global  $pdo;
 
     if (!isset($_SESSION['auth'])) //auth is an object pointing to the DB table, we can access all elements in the table through it
         return (false);
-    $req = $pdo->prepare('SELECT * FROM Images WHERE login = ? ORDER BY date DESC');
-    $req->execute([get_user_id($login)]);
+    $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = ? ORDER BY date DESC');
+    if ($req->execute() === false) {
+      return (false);
+    }
     $images = $req->fetchAll(PDO::FETCH_OBJ);
-    if (empty($images))
-        return (false);
+//    if (empty($images))
+//        return (false);
     return ($images);
 }
 ?>
