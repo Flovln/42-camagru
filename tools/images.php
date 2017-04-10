@@ -3,9 +3,9 @@ include('../config/application.php');
 
 function create_picture($img_data, $filter, $user_id) {
     //Get the img and decode it
-    echo 'img_data : '.$img_data.'  ';
+/*    echo 'img_data : '.$img_data.'  ';
     echo 'filter : '.$filter.'  ';
-    echo 'user_id : '.$user_id.'  ';
+    echo 'user_id : '.$user_id.'  ';*/
     $img = !empty($img_data) ? $img_data : die("No image was taken");
     $img = str_replace('data:image/png;base64,', '', $img);
     $img = str_replace(' ', '+', $img);
@@ -39,18 +39,22 @@ function save_picture($user_id, $image)
 {
 	global $pdo;
 
+  echo 'user id -> '.$user_id;
+  echo "\n";
+  echo 'image path -> '.$image;
+  $captureDate = date("Y-m-d H:i:s", time());
 	if ($user_id === false)
 	{
 		return (false);
 	}
-	$handle = $pdo->prepare('INSERT INTO images ( `user_id`, `path`, `timestamp` ) VALUES ( :user_id, :image, '.time().' );');
-    $handle->bindValue('path', $image);
-    $handle->bindValue('user_id', $user_id);
-    if ($handle->execute() === false)
-    {
-      return (false);
-    }
-    return (true);
+	$handle = $pdo->prepare('INSERT INTO images ( `user_id`, `path`, `date` ) VALUES ( :user_id, :image, :captureDate )');
+  $handle->bindValue('user_id', $user_id);
+  $handle->bindValue('image', $image);
+  $handle->bindValue('captureDate', $captureDate);
+  if ($handle->execute() === false) {
+    return (false);
+  }
+  return (true);
 }
 
 function get_user_images($login)
