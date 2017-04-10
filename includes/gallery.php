@@ -51,7 +51,7 @@
 
     if ($images) {
       for ($i=0; $i < $imagesNb; $i++) {
-        echo "<div class=img_gallery ><img class=image_gallery src='../".$images[$i]->path."'alt='".$images[$i]->id."'></br>
+        echo "<div class=img_gallery >Posted on ".$images[$i]->captureTime."<img class=image_gallery src='../".$images[$i]->path."'alt='".$images[$i]->id."'></br>
         <a href='gallery.php?id=".$images[$i]->id."' ><button class=delbutton name=delete_snap>Delete</button></a></div>";
       }
     } else {

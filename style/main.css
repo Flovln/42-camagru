@@ -172,27 +172,30 @@ body {
 }
 
 .image_snap {
-	height: 50%;
-	width: 50%;
+	height: 60%;
+	width: 60%;
+	padding: 5px;
 	overflow-x: scroll;
 	overflow-y: hidden;
 }
 
 .img_gallery {
-/*	height: 30%;
-	width: 30%;*/
 	margin: 5px;
-	padding: 2px;
+	height: 40%;
+	width: 40%;
+	display: inline-block;
+	text-align: center;
 	border-style: solid;
 	border-color: #000000;
 	border-width: 1px;
 }
 
 .image_gallery {
-	height: 30%;
-	width: 30%;
-	margin: 5px;
-	padding:5px;
+/*	display: inline-block;*/
+	height: 90%;
+	width: 90%;
+/*	margin: 5px;
+	padding:5px;*/
 }
 
 .delbutton {
