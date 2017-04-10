@@ -51,6 +51,18 @@ function save_picture($user_id, $image)
   }
   return (true);
 }
+
+function get_all_images() {
+  global  $pdo;
+  
+  $req = $pdo->prepare('SELECT * FROM Images WHERE id>=1 ORDER BY captureTime DESC');
+  if ($req->execute() === false) {
+    return (false);
+  }
+  $images = $req->fetchAll(PDO::FETCH_OBJ);
+  return $images;
+}
+
 /* 
 function get_user_images($userId)
 {

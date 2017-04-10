@@ -1,5 +1,5 @@
 <div id="main-container">
-  <form ><!--action="./index.php?page=create" method="post" name="snapshot"-->
+  <form >
     <div id="filter-container">
       <label>
         <input id="r1" type="radio" name="filter" value="filter1.png" required>
