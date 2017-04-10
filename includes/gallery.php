@@ -26,11 +26,17 @@
   <? 
     if (isset($_SESSION['auth'])) {
       $images = get_all_images();
-      $imagesNb = count($images);
+//      $likes = ;
+//      $comments = ;
+//      $imagesNb = count($images);
 
       if ($images) {
         for ($i=0; $i < $imagesNb; $i++) {
-          echo "<div class=img_gallery >Posted on ".$images[$i]->captureTime."<img class=image_gallery src='../".$images[$i]->path."'alt='".$images[$i]->id."'></div>";
+          echo "<div class=img_gallery >
+          Posted on ".$images[$i]->captureTime."
+          <img class=image_gallery src='../".$images[$i]->path."'alt='".$images[$i]->id."'></br>
+          Likes:
+          </div>";
         }
       } else {
         echo '<p>The gallery is empty !</p>';
