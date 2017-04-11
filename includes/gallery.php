@@ -24,8 +24,8 @@
 <div>
   <h2>Gallery</h2>
   <? 
-    if (isset($_SESSION['auth'])) {
       $images = get_all_images();
+      // YOU NEED TO BE LOGGUED IN TO COMMENT OR LIKE A PHOTO
 //      $likes = ;
 //      $comments = ;
       $imagesNb = count($images);
@@ -40,8 +40,5 @@
       } else {
         echo '<p>The gallery is empty !</p>';
       }
-    } else {
-      echo "You need to be logged in to access this page";
-    }
   ?>
 </div>
