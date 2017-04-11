@@ -1,6 +1,9 @@
 <?php
 include('../config/application.php');
 
+const LIMIT = 6;
+
+//Function call in save_picture.php
 function create_picture($img_data, $filter, $user_id) {
   //Get the img and decode it
   $img = !empty($img_data) ? $img_data : die("No image was taken");
@@ -34,7 +37,7 @@ function create_picture($img_data, $filter, $user_id) {
   }
 }
 
-
+//Function call in upload.php
 function create_fly_picture($img_data, $filter, $user_id, $img_type){
   
   // Filter to be applied
@@ -80,6 +83,7 @@ function save_picture($user_id, $image)
   return (true);
 }
 
+//Function call in gallery.php
 function get_all_images() {
   global  $pdo;
   
@@ -91,20 +95,20 @@ function get_all_images() {
   return $images;
 }
 
-/* 
-function get_user_images($userId)
+//Function call for pagination in gallery.php
+function get_selected_images($userId, $start_from)
 {
-    global  $pdo;
+  global  $pdo;
+      
+  //use AJAX to automatically update user gallery content
+  $req = $pdo->prepare('SELECT * FROM Images WHERE id>=1 ORDER BY captureTime DESC LIMIT :start_from, :limit;');
+  $req->bindValue('start_from', (int)$start_from, PDO::PARAM_INT);
+  $req->bindValue('limit', LIMIT, PDO::PARAM_INT);
 
-    if (!isset($_SESSION['auth'])) //auth is an object pointing to the DB table, we can access all elements in the table through it
-        return (false);
-    $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = ? ORDER BY captureTime DESC');
-    if ($req->execute() === false) {
-      return (false);
-    }
-    $images = $req->fetchAll(PDO::FETCH_OBJ);
-//    if (empty($images))
-//        return (false);
-    return ($images);
-}*/
+  if ($req->execute() === false) {
+    return (false);
+  }
+  $images = $req->fetchAll();
+  return $images;
+}
 ?>

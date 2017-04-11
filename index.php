@@ -10,6 +10,6 @@
           include 'includes/home.php';
         } ?>
     </div>
-    <? require_once 'includes/footer.php'; ?>
+    <? include 'includes/footer.php'; ?>
   </body>
 </html>
