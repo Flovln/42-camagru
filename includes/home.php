@@ -1,3 +1,13 @@
+<?
+  function display_error() {
+    if (isset($_SESSION['error'])) {
+      $err = $_SESSION["error"];
+      $_SESSION["error"] = "";
+      unset($_SESSION["error"]);
+      echo $err;
+    }
+  }
+?>
 <div id="main-container">
   <form >
     <div id="filter-container">
@@ -47,19 +57,19 @@
   <?
     function get_user_images($userId)
     {
-        global  $pdo;
+      global  $pdo;
       
-        if (!isset($_SESSION['auth']))
-            return (false);
-        //use AJAX to automatically update user gallery content
-        $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = :userId ORDER BY captureTime DESC');
-        $req->bindValue('userId', $userId);
+      if (!isset($_SESSION['auth']))
+        return (false);
+      //use AJAX to automatically update user gallery content
+      $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = :userId ORDER BY captureTime DESC');
+      $req->bindValue('userId', $userId);
 
-        if ($req->execute() === false) {
-          return (false);
-        }
-        $images = $req->fetchAll(PDO::FETCH_OBJ);
-        return ($images);
+      if ($req->execute() === false) {
+        return (false);
+      }
+      $images = $req->fetchAll(PDO::FETCH_OBJ);
+      return ($images);
     }
     $images = get_user_images($_SESSION['user_id']);
     $imagesNb = count($images);
