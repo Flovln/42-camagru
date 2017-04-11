@@ -13,6 +13,16 @@
       echo "Error deleting image";
     }
   }
+
+  function display_error() {
+    if (isset($_SESSION['error'])) {
+      $err = $_SESSION["error"];
+      $_SESSION["error"] = "";
+      unset($_SESSION["error"]);
+      echo $err;
+    }
+  }
+  
 ?>
     <div id="wrapper">
       <?
