@@ -1,15 +1,6 @@
 <?
   const LIMIT = 4;
 
-  function display_error() {
-    if (isset($_SESSION['error'])) {
-      $err = $_SESSION["error"];
-      $_SESSION["error"] = "";
-      unset($_SESSION["error"]);
-      echo $err;
-    }
-  }
-
   if (isset($_GET['id'])) {
     global  $pdo;
 
@@ -22,21 +13,12 @@
     }
   }
 
-//TEST
   if (!isset($_GET["page"])) {
     $start_from = 0;
   } else {
     $start_from = ($_GET["page"] - 1) * LIMIT;
   }
 
-  $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = :userId ORDER BY captureTime DESC');
-  $req->bindValue('userId', $_SESSION['user_id']);
-
-  if ($req->execute() === false) {
-    return (false);
-  }
-  $imgs = $req->fetchAll(PDO::FETCH_OBJ);
-  $imagesCount = count($imgs);
 ?>
 <div id="main-container">
   <form >
@@ -85,7 +67,19 @@
 <div id="side-container">
 </br>
   <?
-      global  $pdo;      
+      global  $pdo;
+      
+      //select all images given a user id
+      $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = :userId ORDER BY captureTime DESC');
+      $req->bindValue('userId', $_SESSION['user_id']);
+
+      if ($req->execute() === false) {
+        return (false);
+      }
+      $imgs = $req->fetchAll(PDO::FETCH_OBJ);
+      $imagesCount = count($imgs);
+
+      //does a selection to limit the number of images to be displayed on each page
       $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = :userId ORDER BY captureTime DESC LIMIT :start_from, :limit;');
       $req->bindValue('userId', $_SESSION['user_id']);
       $req->bindValue('start_from', (int)$start_from, PDO::PARAM_INT);
