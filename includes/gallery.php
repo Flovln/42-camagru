@@ -46,6 +46,9 @@
           echo "<img class=image_gallery src='../".$key['path']."'alt='".$key['id']."'>";
           echo "</br>";
           echo "Likes:";
+          if ($_SESSION['auth']) {
+            //comments + likes DB
+          }
           echo "</div>";
         }
         echo "<div>";
