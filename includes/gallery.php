@@ -32,10 +32,12 @@
 
       if ($images) {
         for ($i=0; $i < $imagesNb; $i++) {
-          echo "<div class=img_gallery >
-          Posted on ".$images[$i]->captureTime." by ".$images[$i]->user."<img class=image_gallery src='../".$images[$i]->path."'alt='".$images[$i]->id."'></br>
-          Likes:
-          </div>";
+          echo "<div class=img_gallery >";
+          echo "Posted on ".$images[$i]->captureTime." by ".$images[$i]->user."";
+          echo "<img class=image_gallery src='../".$images[$i]->path."'alt='".$images[$i]->id."'>";
+          echo "</br>";
+          echo "Likes:";
+          echo "</div>";
         }
       } else {
         echo '<p>The gallery is empty !</p>';
