@@ -29,11 +29,6 @@ if(isset($_POST["upload_submit"])
   }
 }
 
-// Check if file already exists
-if (file_exists($target_file)) {
-  array_push($error, "Sorry, file already exists.");
-}
-
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
   array_push($error, "Sorry, your file is too large");
