@@ -28,13 +28,12 @@
       $images = get_all_images();
 //      $likes = ;
 //      $comments = ;
-//      $imagesNb = count($images);
+      $imagesNb = count($images);
 
       if ($images) {
         for ($i=0; $i < $imagesNb; $i++) {
           echo "<div class=img_gallery >
-          Posted on ".$images[$i]->captureTime."
-          <img class=image_gallery src='../".$images[$i]->path."'alt='".$images[$i]->id."'></br>
+          Posted on ".$images[$i]->captureTime." by ".$images[$i]->user."<img class=image_gallery src='../".$images[$i]->path."'alt='".$images[$i]->id."'></br>
           Likes:
           </div>";
         }

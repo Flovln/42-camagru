@@ -42,7 +42,8 @@ function save_picture($user_id, $image)
   if ($user_id === false) {
     return (false);
   }
-  $handle = $pdo->prepare('INSERT INTO images ( `user_id`, `path`, `captureTime` ) VALUES ( :user_id, :image, :captureTime )');
+  $handle = $pdo->prepare('INSERT INTO images ( `user`, `user_id`, `path`, `captureTime` ) VALUES ( :user, :user_id, :image, :captureTime )');
+  $handle->bindValue('user', $_SESSION['login']);
   $handle->bindValue('user_id', $user_id);
   $handle->bindValue('image', $image);
   $handle->bindValue('captureTime', date("Y-m-d H:i:s", time()));
