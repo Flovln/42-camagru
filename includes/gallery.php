@@ -11,9 +11,9 @@
 </head>
 <div id="header">
   <a href="../index.php">Camagru</a>
+    <a href="gallery.php">Gallery</a>
   <? if (isset($_SESSION['auth'])) {
     echo "Welcome " . $_SESSION['login'];?>
-    <a href="gallery.php">Gallery</a>
     <a href="../index.php">Edit</a>
     <div id="logout">
       <? 
