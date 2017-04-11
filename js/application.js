@@ -27,9 +27,11 @@ function selectFilter(x) {
     fil4.style.background = "none";
     fil5.style.background = "none";
     x.style.background="lightgreen";
-    //  enable button :
+    //  enable snap button :
     document.getElementById("startbutton").disabled = false;
     //  set filter value for upload form :
     document.getElementById("uploadFilter").value = x.src;
+    // enable upload button
+    document.getElementById("uploadButton").disabled = false;
   } catch(e){};
 }

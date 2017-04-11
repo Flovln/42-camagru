@@ -2,28 +2,13 @@
 session_start();
 include ('../tools/images.php');
 
-$target_dir = "uploads/";
+if (!file_exists('../user_imgs') && !is_dir('../user_imgs')) {
+  mkdir('../user_imgs');
+}
+$target_dir = "../user_imgs/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 $error = array();
-/*
-if (isset($_POST['upload_submit'])) {
-  echo 'in condition';
-  $file = rand(1000,100000)."-".$_FILES['fileToUpload']['name'];
-  $file_loc = $_FILES['fileToUpload']['tmp_name'];
-  $file_size = $_FILES['fileToUpload']['size'];
-  $file_type = $_FILES['fileToUpload']['type'];
-  $folder="uploads/";
-     
-  move_uploaded_file($file_loc,$folder.$file);
-  $req = $pdo->prepare('INSERT INTO Images ( file) VALUES ( :file)');
-  $req->bindValue(':file', $file);
-  $req->bindValue(':type', $file_type);
-  $req->bindValue(':size', $file_size);
-  if ($req->execute() === false) {
-    echo "req error";
-  } 
-}*/
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["upload_submit"])
@@ -34,11 +19,15 @@ if(isset($_POST["upload_submit"])
 
   $checkImg = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   $checkFilter = getimagesize($_POST["uploadFilter"]);
-  
+  $checkType = mime_content_type($_FILES["fileToUpload"]["tmp_name"]);
+
   if ($checkImg === false || $checkFilter === false) {
     echo 'error 1';
     array_push($error, "File is not an image");
-  }
+  }/* else if ($checkType != 'image/png' || $checkType != 'image/jpeg') {
+    echo 'error 11';
+    array_push($error, "File is not in the right format");
+  }*/
 }
 
 // Check if file already exists
@@ -54,22 +43,26 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
 }
 
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+if($imageFileType != "png" && $imageFileType != "jpeg") {
     echo 'error 4';
-  array_push($error, "Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+  array_push($error, "Sorry, only JPEG & PNG files are allowed.");
 }
 
 if ($error) {
-    echo 'error 5';
-  array_push($error, "Sorry, your file was not uploaded");
+//  array_push($error, "Sorry, your file was not uploaded");
+  echo "Sorry, your file was not uploaded\n";
 } else {
   $imgData = $_FILES["fileToUpload"]["tmp_name"];
   $userId = $_SESSION['user_id'];
 
-  if (create_picture($imgData, $_POST["uploadFilter"], $userId)) {//move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+  if (move_uploaded_file($imgData, $target_file)){
+    if (create_fly_picture($target_file, $_POST["uploadFilter"], $userId)) {
+      echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    } else {
+      echo "Sorry, there was an error uploading your file.";
+    }
   } else {
-    echo "Sorry, there was an error uploading your file.";
+    echo 'Hacking !';
   }
 }
 

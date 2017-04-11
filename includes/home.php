@@ -35,7 +35,7 @@
       Select an image to upload:
       <input id="uploadFilter" type="hidden" name="uploadFilter" >
       <input id="fileToUpload" type="file" name="fileToUpload">
-      <input id="uploadButton" type="submit" name="upload_submit" value="Upload Image">
+      <input id="uploadButton" type="submit" name="upload_submit" value="Upload Image" disabled>
     </form>
   </div>
   <script type="text/javascript" src="js/application.js"></script>
