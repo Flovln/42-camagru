@@ -44,10 +44,8 @@ if($imageFileType != "png" && $imageFileType != "jpeg") {
   array_push($error, "Sorry, only JPEG & PNG files are allowed.");
 }
 
-if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) && !$error[0]){
+if (!$error[0] && move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)){
   if (create_fly_picture($target_file, $_POST["uploadFilter"], $_SESSION['user_id'], $checkType)) {
-    array_push($error, "Sorry, there was an error uploading your file.");
-  } else {
     array_push($error, "Sorry, there was an error uploading your file.");
   }
 } else {
