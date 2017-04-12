@@ -1,4 +1,32 @@
 <?php
+  include('../config/application.php');
+  include('../tools/users.php');
+
+  if (isset($_POST['submit'], $_POST['newpwd'], $_POST['newpwd_confir'])) {
+    $errors = array();
+
+    if (!is_valid_passwd($_POST['newpwd'])) {
+      $errors[] = 'Invalid password';
+      echo "Please secure your password";
+    }
+    else if ($_POST['newpwd'] !== $_POST['newpwd_confir']) {
+      $errors[] = 'Please enter the same password';
+      echo "Please enter the same password";
+    }
+    if (!empty($errors)) {
+      return ;
+    }
+    $new_pwd = password_hash($_POST['newpwd'], PASSWORD_DEFAULT);
+    $token = bin2hex(random_bytes(16));
+    $req = $pdo->prepare('UPDATE users SET password = :new_pwd WHERE email_id = :token');
+    $req->bindValue('new_pwd', $new_pwd);
+    $req->bindValue('token', $_GET['token']);
+    if ($req->execute() === false) {
+      echo "Database error";
+    }
+  }
+
+/*
 include ('../tools/users.php');
 
 if (!isset($_GET['token']) || empty($_GET['token'])) {
@@ -34,5 +62,5 @@ if (!isset($errors) || empty($errors))
             echo "Invalid token";
         }
     }
-}
+}*/
 ?>

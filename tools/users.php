@@ -10,7 +10,9 @@ function is_valid_email($email) {
 }
 
 function is_valid_passwd($passwd) {
-  return (preg_match('/^[a-zA-Z]{5,12}$/', $passwd)); //add at least one int
+//  return (preg_match('/^[a-zA-Z]{5,12}$/', $passwd)); //add at least one int
+//!ctype_alpha($_POST["passwd"]
+  return true;
 }
 
 function get_user_id($login)
@@ -91,16 +93,15 @@ function ask_confirmation($login, $email, $token) {
     /* port 8888 for home / port 8080 for school */
   $link = 'http://localhost:8080/camagru/actions/activate_account.php?login=' . $login .'&token=' . $token;
   $content = 'You can confirm your account through the link below: ' . $link;
-    //<html></html> email form including vars like content + link
   mail($email, $subject, $content);
 }
 
-function ask_confirmation_newpwd($email, $token) {
-  $subject = 'Camagru: New password created';
+function ask_confirmation_newpwd($email, $token, $email_id) {
+  $subject = 'Camagru: Forget your password';
     /* port 8888 for home / port 8080 for school */
-  $link = 'http://localhost:8888/camagru/actions/activate_newpwd.php?token=' . $token;
+//  $link = 'http://localhost:8888/camagru/actions/activate_newpwd.php?token=' . $token;
+  $link = 'http://localhost:8080/camagru/includes/update_account.php?token='.$email_id.'';
   $content = 'Welcome ' . $email . ' You can confirm your new password through the link below: ' . $link;
-    //<html></html> email form including vars like content + link
   mail($email, $subject, $content);
 }
 
@@ -115,7 +116,7 @@ function activate_newpwd($token){
 function activate_email($login){
   global $pdo;
 
-  $req = $pdo->prepare('UPDATE Users SET email_id = NULL, activated = TRUE WHERE login = :login');
+  $req = $pdo->prepare('UPDATE Users SET activated = TRUE WHERE login = :login');
   $req->bindValue('login', $login);
   return ($req->execute());
 }
