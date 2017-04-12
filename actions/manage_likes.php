@@ -30,6 +30,6 @@
     if ($error) {
       $_SESSION['error'] = $error[0];
     }
-    header('Location: ../includes/gallery.php');
   }
+  header('Location: ../includes/gallery.php');
 ?>

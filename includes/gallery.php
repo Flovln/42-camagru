@@ -39,7 +39,6 @@
         $images = get_all_images();
         $imagesCount = count($images);
         $imagesSelection = get_selected_images($_SESSION['user_id'], $start_from);
-          // YOU NEED TO BE LOGGED IN TO COMMENT OR LIKE A PHOTO
         foreach ($imagesSelection as $key) {
           echo "<div class=img_gallery >";
           echo "Posted on ".$key['captureTime']." by ".$key['user']."";
