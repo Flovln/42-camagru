@@ -116,7 +116,7 @@ body {
 #side-container {
  	float: left;
  	width: 35%;
- 	height: 750px;
+ 	height: 900px;
  	background-color: #A66161;
 /*	overflow: scroll;*/
  }
@@ -196,6 +196,9 @@ body {
 	width: 85%;
 /*	margin: 5px;
 	padding:5px;*/
+}
+.snap-pagination {
+	text-align: center;
 }
 
 .delbutton {

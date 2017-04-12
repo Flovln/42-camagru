@@ -7,7 +7,12 @@
     $imgId = $_GET['id'];
     $req = $pdo->prepare('DELETE FROM Images WHERE id = :imgId');
     $req->bindValue('imgId', $imgId);
+    if($req->execute() === false) {
+      echo "Error deleting image";
+    }
 
+    $req = $pdo->prepare('DELETE FROM Likes WHERE image_id = :imgId');
+    $req->bindValue('imgId', $imgId);
     if($req->execute() === false) {
       echo "Error deleting image";
     }
@@ -67,4 +72,12 @@
 <div id="side-container">
 </br>
   <? include('side_container.php');?>
+</div>
+<div class="snap-pagination">
+<?  if ($imagesCount > LIMIT) {
+    for ($i=0; $i < $imagesCount / LIMIT; $i++) { 
+      echo "<a href='index.php?page=".($i + 1)."'>".($i + 1)."</a>";
+    }
+  }
+?>
 </div>

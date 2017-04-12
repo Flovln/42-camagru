@@ -1,13 +1,14 @@
 <?
   include('../config/application.php');
   include('../tools/images.php');
+  include('../tools/state.php');
 
   const LIMIT = 6;
 
   if (!isset($_GET["page"])) {
     $start_from = 0;
   } else {
-    $start_from = $_GET["page"] * LIMIT;
+    $start_from = ($_GET["page"] - 1) * LIMIT;
   }
 ?>
 <html>
@@ -45,7 +46,19 @@
           echo "Posted on ".$key['captureTime']." by ".$key['user']."";
           echo "<img class=image_gallery src='../".$key['path']."'alt='".$key['id']."'>";
           echo "</br>";
-          echo "Likes:";
+          echo '&hearts;';
+          fetch_likes($key['id']);
+          if (!empty($_SESSION['auth'])){
+            echo '<form action="../actions/manage_likes.php" style="display:inline;" method="POST">';
+            echo '<input type="text" name="pic_id" value="'.$key["id"].'" style="display:none" />';
+            echo '<input type="submit" value="Like"/>';
+            echo '</form>';            
+          }
+          if (!empty($_SESSION['auth'])){
+            
+          }
+          display_error();
+          fetch_comments();
           if ($_SESSION['auth']) {
             //comments + likes DB
           }
@@ -54,7 +67,7 @@
         echo "<div>";
         if ($imagesCount > LIMIT) {
           for ($i=0; $i < $imagesCount / LIMIT; $i++) { 
-            echo "<a href='gallery.php?page=".$i."'>".($i + 1)."</a>";
+            echo "<a href='gallery.php?page=".($i +1)."'>".($i + 1)."</a>";
           }
         }
         echo "</div>";

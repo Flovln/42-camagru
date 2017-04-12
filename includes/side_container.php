@@ -28,9 +28,4 @@
     echo "<a href='index.php?id=".$key['id']."' ><button class=delbutton name=delete_snap>Delete</button></a>";
     echo "</div>";
   }
-  if ($imagesCount > LIMIT) {
-    for ($i=0; $i < $imagesCount / LIMIT; $i++) { 
-      echo "<a href='index.php?page=".($i + 1)."'>".($i + 1)."</a>";
-    }
-  }
 ?>
