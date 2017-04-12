@@ -9,22 +9,36 @@ function display_error() {
   }
 }
 
-function fetch_comments() {
-	echo '';
+function fetch_comments($imgId) {
+	global $pdo;
+
+	$req = $pdo->prepare('SELECT * FROM Comments WHERE image_id = :pic_id');
+	$req->bindValue('pic_id', $imgId);
+  if ($req->execute() === false){
+  	echo 'DB error comments';
+  }
+  $ret = $req->fetchAll();
+  foreach ($ret as $comment) {
+    $req = $pdo->prepare('SELECT login FROM Users WHERE id = :user_id');
+		$req->bindValue('user_id', $comment['user_id']);
+	  if ($req->execute() === false){
+	  	echo 'DB error comments';  	
+		}
+    $user = $req->fetch();
+		echo ''.$user['login'] . ': ';
+  	echo $comment['content'].'</br>';
+  }
 }
 
-function fetch_likes($picId) {
+function fetch_likes($imgId) {
   global $pdo;
 
   $req = $pdo->prepare('SELECT COUNT(user_id) FROM Likes WHERE image_id = :pic_id');
-  $req->bindValue('pic_id', $picId);
+  $req->bindValue('pic_id', $imgId);
   if ($req->execute() === false){
-  	echo 'error yo';
+  	echo 'DB error likes';
   }
   $ret = $req->fetch();
-/*  if ($ret = $req->fetch() === false){
-  	echo 'error 2 yo';
-  }*/
-	echo $ret[0].' ';
+	echo ' '.$ret[0].' ';
 }
 ?>

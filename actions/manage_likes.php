@@ -23,9 +23,6 @@
           array_push($error, "DB error 3");
         }
         $ret = $req->fetch();
-/*        if ($ret = $req->fetch() === false){
-          array_push($error, "DB error 4");
-        }*/
       }
     } else {
       array_push($error, "Session error");

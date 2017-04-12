@@ -45,6 +45,13 @@
           echo "Posted on ".$key['captureTime']." by ".$key['user']."";
           echo "<img class=image_gallery src='../".$key['path']."'alt='".$key['id']."'>";
           echo "</br>";
+          if (!empty($_SESSION['auth'])){
+            echo '<form style="display:inline;" action="../actions/manage_comments.php" method="POST">';
+            echo '<input type="textarea" name="comment" maxlength="2000" style="width:'.PIC_WSIZE.';" />';
+            echo '<input type="text" name="picId" value="'.$key["id"].'" style="display:none" />';
+            echo '<input type="submit" value="post" style="display:inline">';
+            echo '</form>';            
+          }
           echo '&hearts;';
           fetch_likes($key['id']);
           if (!empty($_SESSION['auth'])){
@@ -53,18 +60,9 @@
             echo '<input type="submit" value="Like"/>';
             echo '</form>';            
           }
-          fetch_comments();
-          if (!empty($_SESSION['auth'])){
-            echo '<form style="display:inline;" action="manage_comments.php" method="POST">';
-            echo '<input type="textarea" name="comment" maxlength="2000" style="width:'.PIC_WSIZE.';" />';
-            echo '<input type="text" name="picId" value="'.$pic["id"].'" style="display:none" />';
-            echo '<input type="submit" value="post" style="display:inline">';
-            echo '</form>';            
-          }
+          echo '</br>';
+          fetch_comments($key['id']);
           display_error();
-          if ($_SESSION['auth']) {
-            //comments + likes DB
-          }
           echo "</div>";
         }
         echo "<div>";
