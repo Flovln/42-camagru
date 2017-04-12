@@ -7,18 +7,18 @@
     $error = [];
 
     if ($_SESSION['user_id']) {
-      $req = $pdo->prepare('SELECT * FROM Likes WHERE image_id = :pic_id AND user_id = :user_id');
-      $req->bindValue('pic_id', $_POST['pic_id']);
-      $req->bindValue('user_id', $_SESSION['user_id']);
+      $req = $pdo->prepare('SELECT * FROM Likes WHERE image_id = :picId AND user_id = :userId');
+      $req->bindValue('picId', $_POST['picId']);
+      $req->bindValue('userId', $_SESSION['user_id']);
       if ($req->execute() === false){
         array_push($error, "DB error 1");        
       }
       $ret = $req->fetch();
 
       if (empty($ret)) {
-        $req = $pdo->prepare('INSERT INTO Likes ( image_id, user_id ) VALUES (:pic_id, :user_id)');
-        $req->bindValue('pic_id', $_POST['pic_id']);
-        $req->bindValue('user_id', $_SESSION['user_id']);
+        $req = $pdo->prepare('INSERT INTO Likes ( image_id, user_id ) VALUES (:picId, :userId)');
+        $req->bindValue('picId', $_POST['picId']);
+        $req->bindValue('userId', $_SESSION['user_id']);
         if ($req->execute() === false){
           array_push($error, "DB error 3");
         }
