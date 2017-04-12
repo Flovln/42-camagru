@@ -25,7 +25,7 @@ function fetch_comments($imgId) {
 	  	echo 'DB error comments';  	
 		}
     $user = $req->fetch();
-		echo ''.$user['login'] . ': ';
+		echo '-'.$user['login'] . ': ';
   	echo $comment['content'].'</br>';
   }
 }

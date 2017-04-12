@@ -11,7 +11,7 @@
       $req->bindValue('picId', $_POST['picId']);
       $req->bindValue('userId', $_SESSION['user_id']);
       if ($req->execute() === false){
-        array_push($error, "DB error 1");        
+        array_push($error, "DB error");        
       }
       $ret = $req->fetch();
 
@@ -20,7 +20,7 @@
         $req->bindValue('picId', $_POST['picId']);
         $req->bindValue('userId', $_SESSION['user_id']);
         if ($req->execute() === false){
-          array_push($error, "DB error 3");
+          array_push($error, "DB error");
         }
         $ret = $req->fetch();
       }

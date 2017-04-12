@@ -180,9 +180,11 @@ body {
 }
 
 .img_gallery {
-	margin: 5px;
-	height: 30%;
-	width: 30%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-right: 10px;
+	height: 32%;
+	width: 32%;
 	display: inline-block;
 	text-align: center;
 	border-style: solid;
@@ -194,15 +196,31 @@ body {
 /*	display: inline-block;*/
 	height: 85%;
 	width: 85%;
-/*	margin: 5px;
-	padding:5px;*/
+/*	padding:5px;*/
 }
 .snap-pagination {
 	text-align: center;
 }
 
+.gallery-pagination {
+	text-align: center;
+	margin-top: 5vmin;
+}
 .delbutton {
 	text-align: center;
+}
+
+.comments {
+    background-color: pink;
+    vertical-align: top;
+    align: right;
+    width: 37vmin;
+    height: 4vmin;
+    overflow: auto;
+    display: inline-block;
+    font-size: small;
+    margin-top: 2vmin;
+    text-align: left;
 }
 
 #logout {
