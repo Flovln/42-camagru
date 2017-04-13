@@ -218,7 +218,7 @@ body {
     height: 4vmin;
     overflow: auto;
     display: inline-block;
-    font-size: small;
+    font-size: medium;
     margin-top: 2vmin;
     text-align: left;
 }

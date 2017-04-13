@@ -1,3 +1,6 @@
+<?
+	include('../tools/state.php');
+?>
 <div id="header">
   <a href="../index.php">Camagru</a>
   <? if (isset($_SESSION['auth'])) {
@@ -17,4 +20,5 @@
 	    <br/>
 	    <input type="submit" name="submit" value="OK" required />
 	</form>
+	<?display_error('err_signin')?>
 </div>

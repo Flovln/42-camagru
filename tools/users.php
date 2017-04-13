@@ -2,7 +2,11 @@
 include('../config/application.php');
 
 function is_valid_login($login) {
-  return (preg_match('/^[a-zA-Z]{5,12}$/', $login)); //add at least one int + check maj and min letters
+  if (strlen($login) >= 5){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function is_valid_email($email) {
@@ -10,9 +14,11 @@ function is_valid_email($email) {
 }
 
 function is_valid_passwd($passwd) {
-//  return (preg_match('/^[a-zA-Z]{5,12}$/', $passwd)); //add at least one int
-//!ctype_alpha($_POST["passwd"]
-  return true;
+  if(!ctype_alpha($passwd) && strlen($passwd) >= 7){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function get_user_id($login)

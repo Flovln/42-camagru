@@ -63,7 +63,6 @@
             echo '<div class="comments">';
               fetch_comments($key['id']);
             echo '</div>';
-            display_error();
           echo "</div>";
         }
         echo "<div class=gallery-pagination>";

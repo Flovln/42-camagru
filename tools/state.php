@@ -1,11 +1,15 @@
 <?php
-	//Function call in home.php
-	function display_error() {
-	  if (isset($_SESSION['error'])) {
+	//Function call in home.php && sign_up.php && update_account.php
+	function display_error($error) {
+	  if ($error === 'err_upload' && isset($_SESSION['error'])) {
 	    $err = $_SESSION["error"];
 	    $_SESSION["error"] = "";
 	    unset($_SESSION["error"]);
 	    echo $err;
+	  } else if ($error === 'err_signin' && isset($_GET['error'])) {
+	  	echo $_GET['error'];
+	  } else if ($error === 'err_new_password' && isset($_GET['error'])) {
+	  	echo $_GET['error'];
 	  }
 	}
 

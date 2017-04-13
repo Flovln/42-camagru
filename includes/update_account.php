@@ -1,20 +1,19 @@
 <?
   include('../config/application.php');
   include('../tools/users.php');
+  include('../tools/state.php');
 
   if (isset($_POST['submit'], $_POST['newpwd'], $_POST['newpwd_confir'])) {
-    $errors = array();
+    $error = array();
 
     if (!is_valid_passwd($_POST['newpwd'])) {
-      $errors[] = 'Invalid password';
-      echo "Please secure your password";
+      array_push($error, "Please secure your password");
     }
     else if ($_POST['newpwd'] !== $_POST['newpwd_confir']) {
-      $errors[] = 'Please enter the same password';
-      echo "Please enter the same password";
+      array_push($error, "Please make sure to enter the same password");
     }
-    if (!empty($errors)) {
-      return ;
+    if (!empty($error)) {
+      header('Location: ../includes/update_account.php?error='.$error[0].'');
     }
     $new_pwd = password_hash($_POST['newpwd'], PASSWORD_DEFAULT);
     $token = bin2hex(random_bytes(16));
@@ -40,3 +39,4 @@ echo '<form action="../includes/update_account.php?token='.$_GET['token'].'" met
   <br />
   <input type="submit" name="submit" value="OK"/>
 </form>
+<? display_error('err_new_password')?>
