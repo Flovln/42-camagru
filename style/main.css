@@ -134,6 +134,54 @@ body.signup {
 	margin-top: 19vmin;
 }
 
+/************* GALLERY STYLE **************/
+
+.gallery-container {
+	text-align: center;
+}
+
+.gallery-img-container {
+	margin-top: 2vmin;
+	margin-bottom: 4.2vmin;
+	margin-right: 0.5vmin;
+	height: 33vmin;
+	width: 33vmin;
+	display: inline-block;
+	text-align: center;
+	border-style: solid;
+	border-color: #6D6D6D;
+	border-width: 0.1vmin;
+}
+
+.img-props-gallery {
+	height: 28vmin;
+	width: 28vmin;
+	padding: 0.4vmin;
+}
+
+.comments {
+  background-color: #B2B2B2;
+  vertical-align: top;
+  align: right;
+  width: 33vmin;
+  height: 4vmin;
+  overflow: auto;
+  display: inline-block;
+  font-size: medium;
+  margin-top: 2vmin;
+  text-align: left;
+	border-style: solid;
+	border-color: #6D6D6D;
+	border-width: 0.1vmin;
+}
+
+.gallery-pagination {
+	text-align: center;
+	margin-top: 2vmin;
+}
+
+/************************************************/
+
 #main-container {
  	float: left;
 	width: 65%;
@@ -207,48 +255,12 @@ body.signup {
 	overflow-y: hidden;
 }
 
-.img_gallery {
-	margin-top: 30px;
-	margin-bottom: 30px;
-	margin-right: 10px;
-	height: 32%;
-	width: 32%;
-	display: inline-block;
-	text-align: center;
-	border-style: solid;
-	border-color: #000000;
-	border-width: 1px;
-}
-
-.image_gallery {
-/*	display: inline-block;*/
-	height: 85%;
-	width: 85%;
-/*	padding:5px;*/
-}
 .snap-pagination {
 	text-align: center;
 }
 
-.gallery-pagination {
-	text-align: center;
-	margin-top: 5vmin;
-}
 .delbutton {
 	text-align: center;
-}
-
-.comments {
-    background-color: pink;
-    vertical-align: top;
-    align: right;
-    width: 30vmin;
-    height: 4vmin;
-    overflow: auto;
-    display: inline-block;
-    font-size: medium;
-    margin-top: 2vmin;
-    text-align: left;
 }
 
 #logout {

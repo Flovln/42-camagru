@@ -31,20 +31,21 @@
         </div>
       <? } ?>
     </div>
-    <div>
-      <h2>Gallery</h2>
+    <br/>
+    <br/>
+    <div class="gallery-container">
       <? 
         $images = get_all_images();
         $imagesCount = count($images);
         $imagesSelection = get_selected_images($_SESSION['user_id'], $start_from);
         foreach ($imagesSelection as $key) {
-          echo "<div class=img_gallery >";
+          echo "<div class=gallery-img-container >";
             echo "Posted on ".$key['captureTime']." by ".$key['user']."";
-            echo "<img class=image_gallery src='../".$key['path']."'alt='".$key['id']."'>";
+            echo "<img class=img-props-gallery src='../".$key['path']."'alt='".$key['id']."'>";
             echo "</br>";
             if (!empty($_SESSION['auth'])){
               echo '<form style="display:inline;" action="../actions/manage_comments.php" method="POST">';
-              echo '<input type="textarea" name="comment" maxlength="2000" style="width:'.PIC_WSIZE.';" />';
+              echo '<input type="textarea" name="comment" maxlength="2000" style="width:20vmin;height:2vmin" />';
               echo '<input type="text" name="picId" value="'.$key["id"].'" style="display:none" />';
               echo '<input type="submit" value="post" style="display:inline">';
               echo '</form>';            
