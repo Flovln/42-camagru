@@ -115,7 +115,7 @@ body.signup {
   border-radius: 6px 6px 6px 6px;
 }
 
-.reset-pwd-style {
+.reset-button-pwd-style {
 /* 	margin-top: 1vmin;*/
   border: none;
   width: 35vmin;
@@ -127,6 +127,11 @@ body.signup {
 .signup-style {
 	text-align: center;
 	margin-top: 19vmin;
+}
+
+.reset-password-style {
+	text-align: center;
+	margin-top: 30vmin;
 }
 
 #main-container {

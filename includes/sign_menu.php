@@ -12,6 +12,6 @@
     <br />
   </form>
   <br />
-  <div><a class="reset-pwd-style" href="includes/reset_my_password.php">Forgot your password ? </a></div><br />
+  <div><a class="reset-button-pwd-style" href="includes/reset_my_password.php">Forgot your password ? </a></div><br />
   <div><a class="signup-button-style" href="includes/sign_up.php">Sign Up </a></div>
 </div>

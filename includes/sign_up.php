@@ -13,12 +13,6 @@
     <div id="header">
       <a class="logo" href="../index.php">Camagru</a>
       <a class="gallery-link" href="gallery.php">Gallery</a>
-      <? if (isset($_SESSION['auth'])) {
-        echo "Welcome " . $_SESSION['login'];?>
-        <div id="logout">
-          <? echo ("<li><a href=\"logout.php\">Logout</a></li>");?>
-        </div>
-      <? } ?>
     </div>
     <div class="signup-style">
       <form action="../actions/create_account.php" method="POST">
@@ -26,11 +20,11 @@
         <br/>
         <br/>
         <br/>
-        Identifiant:
+        Username:
         <br/>
         <input type="login" name="login" class="input-style" required />
         <br/>
-        Mot de passe: 
+        Password: 
         <br/>
         <input type="password" name="passwd" class="input-style" required />
         <br/>
