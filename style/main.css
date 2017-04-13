@@ -19,6 +19,14 @@ body.gallery {
 	background-color: #EEEEEE;
 }
 
+body.signup {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: url(../pictures/landscape.jpg) no-repeat center center fixed;
+	font-family: sans-serif;
+}
+
 #wrapper {
 	min-height: 100%;
 	position: relative;
