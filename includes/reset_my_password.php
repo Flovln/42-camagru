@@ -12,6 +12,10 @@
       <a class="gallery-link" href="gallery.php">Gallery</a>
     </div>
 		<form class="reset-password-style" action="../actions/reset_password.php" method="POST">
+      <h2>We will send you an email to reset your password.</h2>
+      <br/>
+      <br/>
+      <br/>
 		  Please enter your email:
 		  <br/>
 		  <input class="input-style" type="email" name="email" required/>

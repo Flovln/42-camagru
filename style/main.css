@@ -131,7 +131,7 @@ body.signup {
 
 .reset-password-style {
 	text-align: center;
-	margin-top: 30vmin;
+	margin-top: 19vmin;
 }
 
 #main-container {
@@ -242,7 +242,7 @@ body.signup {
     background-color: pink;
     vertical-align: top;
     align: right;
-    width: 37vmin;
+    width: 30vmin;
     height: 4vmin;
     overflow: auto;
     display: inline-block;
