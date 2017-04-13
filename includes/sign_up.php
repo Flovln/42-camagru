@@ -32,5 +32,6 @@
 			</form>
 			<?display_error('err_signin')?>
 		</div>
+    <? include '../includes/footer.php'; ?>
 	</body>
 </html>
