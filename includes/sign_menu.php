@@ -8,10 +8,10 @@
     <br /> 
     <input type="password" name="passwd" class="input-style" />
     <br />
-    <input type="submit" name="submit" value="Sign In" class="submit_style" />
+    <input type="submit" name="submit" value="Sign In" class="submit-style" />
     <br />
   </form>
   <br />
-  <div><a id="forgot_pwd_style" href="includes/reset_my_password.php">Forgot password ? </a></div><br />
-  <div><a id="signup_style" href="includes/sign_up.php">Sign Up </a></div>
+  <div><a class="reset-pwd-style" href="includes/reset_my_password.php">Forgot your password ? </a></div><br />
+  <div><a class="signup-style" href="includes/sign_up.php">Sign Up </a></div>
 </div>

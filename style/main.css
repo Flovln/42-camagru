@@ -9,6 +9,7 @@ body.home {
 	padding: 0;
 	height: 100%;
 	background: url(../pictures/landscape.jpg) no-repeat center center fixed;
+	font-family: sans-serif;
 }
 
 body.gallery {
@@ -68,52 +69,52 @@ body.gallery {
 }
 
 .input-style {
-	margin-top: 5px;
-  margin-bottom: 4px;
-  padding-top: 5px;
-  padding-bottom: 6px;
+	margin-top: 0.5vmin;
+  margin-bottom: 1vmin;
+  padding-top: 0.5vmin;
+  padding-bottom: 0.5vmin;
+  font-size: 1.1vmin;
+  font-family: sans-serif;
 	border: none;
-  width: 30%;
+  width: 35vmin;
   border-radius: 2px 2px 2px 2px;
-  box-shadow: 0 1px 0 0 #AFAFAF;
+  box-shadow: 0 1px 0 0 #6D6D6D;
 }
 
-.submit_style {
-     margin-top: 10px;
-     margin-bottom: 5px;
-     padding-top: 10px;
-     padding-bottom: 10px;
-     border: none;
-     width: 30%;
-     box-shadow: 0 1px 0 0 #565656;
-     background-color: #AFAFAF;
-     border-radius: 6px 6px 6px 6px;
-     opacity: 0.8; /*test for fun*/
- }
-
-#signup_style {
-	 margin-top: 10px;
-     margin-bottom: 5px;
-     padding-top: 10px;
-     padding-bottom: 10px;
-     border: none;
-     width: 30%;
-     box-shadow: 0 1px 0 0 #565656;
-     background-color: #EA9284;
-     border-radius: 6px 6px 6px 6px;
-     opacity: 0.9; /*test for fun*/
+.submit-style {
+	margin-top: 0.8vmin;
+  padding-top: 0.8vmin;
+  padding-bottom: 0.8vmin;
+	font-size: 1.4vmin;
+  font-family: sans-serif;
+  border: none;
+  width: 35vmin;
+  box-shadow: 0 1px 0 0 #6D6D6D;
+  background-color: #FE5A5A;
+  border-radius: 6px 6px 6px 6px;
 }
 
-#forgot_pwd_style {
- 	margin-top: 10px;
- 	/* padding-bottom: 10px;*/
-     border: none;
-     width: 15%;
-     box-shadow: 0 1px 0 0 #565656;
-     background-color: #AFAFAF;
-     border-radius: 2px 2px 2px 2px;
-     opacity: 0.8; /*test for fun*/
- }
+.signup-style {
+	margin-top: 0.5vmin;
+  padding-top: 1vmin;
+  padding-bottom: 1vmin;
+  text-decoration: none;
+	color: white;
+  width: 35vmin;
+	border: none;
+  box-shadow: 0 1px 0 0 #6D6D6D;
+  background-color: #0285D7;
+  border-radius: 6px 6px 6px 6px;
+}
+
+.reset-pwd-style {
+/* 	margin-top: 1vmin;*/
+  border: none;
+  width: 35vmin;
+  box-shadow: 0 1px 0 0 #565656;
+  border-radius: 2px 2px 2px 2px;
+  color: white;
+}
 
 #main-container {
  	float: left;
