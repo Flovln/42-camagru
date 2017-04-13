@@ -7,10 +7,10 @@
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <title>Camagru</title>
   </head>
-  <body>
+  <body class="home">
     <div id="header">
-      <a href="index.php">Camagru</a>
-      <a href="includes/gallery.php">Gallery</a>
+      <a class="logo" href="index.php">Camagru</a>
+      <a class="gallery-link" href="includes/gallery.php">Gallery</a>
       <? if (isset($_SESSION['auth'])) {
         echo "Welcome " . $_SESSION['login'];?>
         <a href="index.php">Home</a>

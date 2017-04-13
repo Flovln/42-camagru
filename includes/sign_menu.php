@@ -1,13 +1,12 @@
-<div align="center">
-  <img src="./pictures/Sf_bay.jpg" id="main_img">
-  <form action="actions/sign_in.php" method="POST">
+<div class="sign-menu">
+  <form action="actions/sign_in.php" method="POST" autocomplete="off">
     Username:
     <br />
-    <input type="login" name="login" class="enter_style"/>
+    <input type="login" name="login" class="input-style"/>
     <br />
     Password:
     <br /> 
-    <input type="password" name="passwd" class="enter_style"/>
+    <input type="password" name="passwd" class="input-style" />
     <br />
     <input type="submit" name="submit" value="Sign In" class="submit_style" />
     <br />
