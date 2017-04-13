@@ -4,11 +4,10 @@
 * * Application defines
 */
 
-//Home
-/*define('APPLICATION_ADDR', 'http://localhost:8888/camagru');*/
-//School
+/* port 8888 for home / port 8080 for school */
 define('APPLICATION_ADDR', 'http://localhost:8080/camagru');
-define('IMAGES_DIR', 'images/');
+define('UPLOADS', 'uploads/');
+define('FILTERS', 'filters/');
 define('ROOT', 'index.php');
 
 /*

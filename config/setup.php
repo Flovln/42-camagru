@@ -1,23 +1,24 @@
 <?php
-require_once('database.php');
-$sql = file_get_contents('camagru.sql');
+  require_once('database.php');
 
-try {
-  $pdo = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $sql = file_get_contents('camagru.sql');
 
-  $dbname = "camagru";
-  $pdo->query("CREATE DATABASE IF NOT EXISTS $dbname");
-  $pdo->query("use $dbname");
-  if ($pdo !== false && $pdo->exec($sql) === false)
-      $messages[] = 'Error while installing database';
-    else
-      $messages[] = "Database and tables successfully installed";
-}
+  try {
+    $pdo = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-catch(PDOException $e) {
-  $messages[] = $e->getMessage();
-}
+    $dbname = "camagru";
+    $pdo->query("CREATE DATABASE IF NOT EXISTS $dbname");
+    $pdo->query("use $dbname");
+    if ($pdo !== false && $pdo->exec($sql) === false)
+        $messages[] = 'Error while installing database';
+      else
+        $messages[] = "Database and tables successfully installed";
+  }
+
+  catch(PDOException $e) {
+    $messages[] = $e->getMessage();
+  }
 ?>
 
 <!doctype html>

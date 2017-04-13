@@ -95,19 +95,16 @@ function register_user($login, $passwd, $email) {
 }
 
 function ask_confirmation($login, $email, $token) {
-  $subject = 'Camagru: Please verify your account';
-    /* port 8888 for home / port 8080 for school */
-  $link = 'http://localhost:8080/camagru/actions/activate_account.php?login=' . $login .'&token=' . $token;
-  $content = 'You can confirm your account through the link below: ' . $link;
+  $subject = 'Camagru: Your new account';
+  $link = APPLICATION_ADDR.'/actions/activate_account.php?login=' . $login .'&token=' . $token;
+  $content = 'Welcome '.$login.','."\n\n".'In order to use our platform, please verify your account.'."\n\n".'You can confirm your account using the link below: '."\n".$link."\n\n".'The camagru team.';
   mail($email, $subject, $content);
 }
 
 function ask_confirmation_newpwd($email, $token, $email_id) {
   $subject = 'Camagru: Forget your password';
-    /* port 8888 for home / port 8080 for school */
-//  $link = 'http://localhost:8888/camagru/actions/activate_newpwd.php?token=' . $token;
-  $link = 'http://localhost:8080/camagru/includes/update_account.php?token='.$email_id.'';
-  $content = 'Welcome ' . $email . ' You can confirm your new password through the link below: ' . $link;
+  $link = APPLICATION_ADDR.'/includes/update_account.php?token='.$email_id.'';
+  $content = 'Hi '.$email.','."\n\n".'Please confirm your new password through the link below: '.$link."\n\n".'The camagru team.';
   mail($email, $subject, $content);
 }
 

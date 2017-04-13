@@ -1,10 +1,11 @@
 <?php
-session_start();
+  include('../config/application.php');
+	session_start();
 
-if (isset($_SESSION['login'])) {
-  unset($_SESSION['login']);
-}
+	if (isset($_SESSION['login'])) {
+	  unset($_SESSION['login']);
+	}
 
-session_destroy();
-header('Location: ../index.php');
+	session_destroy();
+	header('Location: ../'.ROOT);
 ?>

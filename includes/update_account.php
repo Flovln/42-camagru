@@ -23,7 +23,7 @@
     if ($req->execute() === false) {
       echo "Database error";
     } else {
-      header( "refresh:2;url= ../index.php" );
+      header( "refresh:2;url= ../".ROOT );
       echo 'You can now start using your new password';
     }
   }

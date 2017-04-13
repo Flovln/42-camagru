@@ -23,13 +23,13 @@
       }
       $userId = $req->fetch();
 
-      $req = $pdo->prepare('SELECT email FROM Users WHERE id=:userId');
+      $req = $pdo->prepare('SELECT * FROM Users WHERE id=:userId');
       $req->bindValue('userId', $userId[0]);
       if ($req->execute() === false){
         array_push($error, "DB error");    	
       }
       $ret = $req->fetch();
-      mail($ret[0], 'Camagru: New comment','You received a new comment');
+      mail($ret['email'], 'Camagru: new comment','Hi '.$ret['login'].','."\n\n".'Someone commented one of your post!'."\n\n".'Have a nice day,'."\n\n".'The Camagru team.');
   	}
   	if ($error) {
       $_SESSION['error'] = $error[0];
