@@ -1,7 +1,4 @@
 <?php
-include('../config/application.php');
-
-const LIMIT = 6;
 
 //Function call in save_picture.php
 function create_picture($img_data, $filter, $user_id) {
@@ -24,10 +21,10 @@ function create_picture($img_data, $filter, $user_id) {
   imagecopy($dest, $src, 0, 0, 0, 0, $dest_width, $dest_height);
 
   //saving in directory
-  if (!file_exists('../user_imgs') && !is_dir('../user_imgs')) {
-    mkdir('../user_imgs');
+  if (!file_exists('../'.UPLOADS) && !is_dir('../'.UPLOADS)) {
+    mkdir('../'.UPLOADS);
   }
-  $imgPath = 'user_imgs/'.$user_id.'_'.uniqid().'.png';
+  $imgPath = UPLOADS.$user_id.'_'.uniqid().'.png';
   imagepng($dest, '../'.$imgPath);
   imagedestroy($dest);
 
@@ -55,7 +52,7 @@ function create_fly_picture($img_data, $filter, $user_id, $img_type){
   // Copy stamp on bottom layer
   imagecopy($dest, $src, 0, 0, 0, 0, $dest_width, $dest_height);
   // Store in disk and database
-  $imgPath = 'user_imgs/'.$user_id.'_'.uniqid().'.png';
+  $imgPath = UPLOADS.$user_id.'_'.uniqid().'.png';
   imagepng($dest, '../'.$imgPath);
   imagedestroy($dest);
 
@@ -70,7 +67,7 @@ function save_picture($user_id, $image)
   global $pdo;
 
   if ($user_id === false) {
-    return (false);
+    return false;
   }
   $handle = $pdo->prepare('INSERT INTO images ( `user`, `user_id`, `path`, `captureTime` ) VALUES ( :user, :user_id, :image, :captureTime )');
   $handle->bindValue('user', $_SESSION['login']);
@@ -78,9 +75,9 @@ function save_picture($user_id, $image)
   $handle->bindValue('image', $image);
   $handle->bindValue('captureTime', date("Y-m-d H:i:s", time()));
   if ($handle->execute() === false) {
-    return (false);
+    return false;
   }
-  return (true);
+  return true;
 }
 
 //Function call in gallery.php
@@ -89,7 +86,7 @@ function get_all_images() {
   
   $req = $pdo->prepare('SELECT * FROM Images WHERE id>=1 ORDER BY captureTime DESC');
   if ($req->execute() === false) {
-    return (false);
+    return false;
   }
   $images = $req->fetchAll(PDO::FETCH_OBJ);
   return $images;
@@ -100,15 +97,38 @@ function get_selected_images($userId, $start_from)
 {
   global  $pdo;
       
-  //use AJAX to automatically update user gallery content
   $req = $pdo->prepare('SELECT * FROM Images WHERE id>=1 ORDER BY captureTime DESC LIMIT :start_from, :limit;');
   $req->bindValue('start_from', (int)$start_from, PDO::PARAM_INT);
-  $req->bindValue('limit', LIMIT, PDO::PARAM_INT);
+  $req->bindValue('limit', GALLERY_LIMIT, PDO::PARAM_INT);
 
   if ($req->execute() === false) {
-    return (false);
+    return false;
   }
   $images = $req->fetchAll();
   return $images;
+}
+
+//Function call in home.php, use to delete likes + comments of a deleted image
+function delete_cascade($img_id)
+{
+  global  $pdo;
+
+  $req = $pdo->prepare('DELETE FROM Images WHERE id = :imgId');
+  $req->bindValue('imgId', $img_id);
+  if($req->execute() === false) {
+    return false;
+  }
+
+  $req = $pdo->prepare('DELETE FROM Likes WHERE image_id = :imgId');
+  $req->bindValue('imgId', $img_id);
+  if($req->execute() === false) {
+    return false;
+  }
+
+  $req = $pdo->prepare('DELETE FROM Comments WHERE image_id = :imgId');
+  $req->bindValue('imgId', $img_id);
+  if($req->execute() === false) {
+    return false;
+  }
 }
 ?>

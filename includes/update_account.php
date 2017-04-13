@@ -28,15 +28,15 @@
     }
   }
 
-echo '<form action="../includes/update_account.php?token='.$_GET['token'].'" method="POST">'?>
-  New password:
-  <br /> 
-  <input type="password" name="newpwd"/>
-  <br />
-  New password confirmation:
-  <br />
-  <input type="password" name="newpwd_confir"/>
-  <br />
-  <input type="submit" name="submit" value="OK"/>
-</form>
+  echo '<form action="../includes/update_account.php?token='.$_GET['token'].'" method="POST">'?>
+    New password:
+    <br /> 
+    <input type="password" name="newpwd"/>
+    <br />
+    New password confirmation:
+    <br />
+    <input type="password" name="newpwd_confir"/>
+    <br />
+    <input type="submit" name="submit" value="OK"/>
+  </form>
 <? display_error('err_new_password')?>

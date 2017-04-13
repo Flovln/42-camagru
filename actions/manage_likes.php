@@ -1,6 +1,5 @@
 <?
   include('../config/application.php');
-  session_start();
 
   if(isset($_POST)) {
     global $pdo;

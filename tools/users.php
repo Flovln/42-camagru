@@ -104,16 +104,8 @@ function ask_confirmation($login, $email, $token) {
 function ask_confirmation_newpwd($email, $token, $email_id) {
   $subject = 'Camagru: Forget your password';
   $link = APPLICATION_ADDR.'/includes/update_account.php?token='.$email_id.'';
-  $content = 'Hi '.$email.','."\n\n".'Please confirm your new password through the link below: '.$link."\n\n".'The camagru team.';
+  $content = 'Hi '.$email.','."\n\n".'Please confirm your new password through this link '.$link."\n\n".'The camagru team.';
   mail($email, $subject, $content);
-}
-
-function activate_newpwd($token){
-  global $pdo;
-
-  $req = $pdo->prepare('UPDATE Users SET email_id = NULL, activated = TRUE WHERE email_id = :token');
-  $req->bindValue('token', $token);
-  return ($req->execute());
 }
 
 function activate_email($login){

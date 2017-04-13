@@ -1,27 +1,14 @@
 <?
-  const LIMIT = 4;
-
   if (isset($_GET['id'])) {
-    global  $pdo;
-
-    $imgId = $_GET['id'];
-    $req = $pdo->prepare('DELETE FROM Images WHERE id = :imgId');
-    $req->bindValue('imgId', $imgId);
-    if($req->execute() === false) {
-      echo "Error deleting image";
-    }
-
-    $req = $pdo->prepare('DELETE FROM Likes WHERE image_id = :imgId');
-    $req->bindValue('imgId', $imgId);
-    if($req->execute() === false) {
-      echo "Error deleting image";
+    if (delete_cascade($_GET['id']) === false){
+      echo 'There was an error connecting to Database';
     }
   }
 
   if (!isset($_GET["page"])) {
     $start_from = 0;
   } else {
-    $start_from = ($_GET["page"] - 1) * LIMIT;
+    $start_from = ($_GET["page"] - 1) * SNAP_LIMIT;
   }
 
 ?>
@@ -74,8 +61,8 @@
   <? include('side_container.php');?>
 </div>
 <div class="snap-pagination">
-<?  if ($imagesCount > LIMIT) {
-    for ($i=0; $i < $imagesCount / LIMIT; $i++) { 
+<?  if ($imagesCount > SNAP_LIMIT) {
+    for ($i=0; $i < $imagesCount / SNAP_LIMIT; $i++) { 
       echo "<a href='index.php?page=".($i + 1)."'>".($i + 1)."</a>";
     }
   }

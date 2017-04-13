@@ -1,7 +1,6 @@
 <?
   include('../config/application.php');
   include('../tools/images.php');
-  session_start();
 
   if (!isset($_POST['img_data'], $_POST['filter'], $_SESSION['user_id']) || empty($_POST['img_data']) || empty($_POST['filter'])) {
     header('../'.ROOT);

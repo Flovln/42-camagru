@@ -1,6 +1,5 @@
 <?
   global  $pdo;
-      
   //select all images given a user id
   $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = :userId ORDER BY captureTime DESC');
   $req->bindValue('userId', $_SESSION['user_id']);
@@ -15,7 +14,7 @@
   $req = $pdo->prepare('SELECT * FROM Images WHERE user_id = :userId ORDER BY captureTime DESC LIMIT :start_from, :limit;');
   $req->bindValue('userId', $_SESSION['user_id']);
   $req->bindValue('start_from', (int)$start_from, PDO::PARAM_INT);
-  $req->bindValue('limit', LIMIT, PDO::PARAM_INT);
+  $req->bindValue('limit', SNAP_LIMIT, PDO::PARAM_INT);
 
   if ($req->execute() === false) {
     echo 'error DB';

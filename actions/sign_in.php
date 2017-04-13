@@ -1,7 +1,6 @@
 <?php
   include('../config/application.php');
   include ('../tools/users.php');
-  session_start();
 
   if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd']))
   {

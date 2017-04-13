@@ -1,11 +1,11 @@
 <?php
+  include ('../config/application.php');
   include ('../tools/images.php');
-  session_start();
 
-  if (!file_exists('../user_imgs') && !is_dir('../user_imgs')) {
-    mkdir('../user_imgs');
+  if (!file_exists('../'.UPLOADS) && !is_dir('../'.UPLOADS)) {
+    mkdir('../'.UPLOADS);
   }
-  $target_dir = "../user_imgs/";
+  $target_dir = "../".UPLOADS;
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
   $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
   $error = array();

@@ -1,6 +1,7 @@
 <?
   include('config/application.php');
   include('tools/state.php');
+  include('tools/images.php');
   include('includes/header.php');
 ?>
   <div id="wrapper">

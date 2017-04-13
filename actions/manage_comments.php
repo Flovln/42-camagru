@@ -1,6 +1,5 @@
 <?
   include('../config/application.php');
-  session_start();
 
   if(isset($_POST) && !empty($_POST['comment']) && strlen($_POST['comment']) < 2000) {
   	global $pdo;

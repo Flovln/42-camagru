@@ -13,6 +13,6 @@
     <br />
   </form>
   <br />
-  <div><a id="forgot_pwd_style" href="includes/forgot_pwd.php">Forgot password ? </a></div><br />
+  <div><a id="forgot_pwd_style" href="includes/reset_my_password.php">Forgot password ? </a></div><br />
   <div><a id="signup_style" href="includes/sign_up.php">Sign Up </a></div>
 </div>

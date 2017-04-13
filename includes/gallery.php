@@ -3,12 +3,10 @@
   include('../tools/images.php');
   include('../tools/state.php');
 
-  const LIMIT = 6;
-
   if (!isset($_GET["page"])) {
     $start_from = 0;
   } else {
-    $start_from = ($_GET["page"] - 1) * LIMIT;
+    $start_from = ($_GET["page"] - 1) * GALLERY_LIMIT;
   }
 ?>
 <html>
@@ -66,8 +64,8 @@
           echo "</div>";
         }
         echo "<div class=gallery-pagination>";
-        if ($imagesCount > LIMIT) {
-          for ($i=0; $i < $imagesCount / LIMIT; $i++) { 
+        if ($imagesCount > GALLERY_LIMIT) {
+          for ($i=0; $i < $imagesCount / GALLERY_LIMIT; $i++) { 
             echo "<a href='gallery.php?page=".($i +1)."'>".($i + 1)."</a>";
           }
         }
