@@ -102,7 +102,7 @@ body.signup {
   border-radius: 6px 6px 6px 6px;
 }
 
-.signup-style {
+.signup-button-style {
 	margin-top: 0.5vmin;
   padding-top: 1vmin;
   padding-bottom: 1vmin;
@@ -122,6 +122,11 @@ body.signup {
   box-shadow: 0 1px 0 0 #565656;
   border-radius: 2px 2px 2px 2px;
   color: white;
+}
+
+.signup-style {
+	text-align: center;
+	margin-top: 19vmin;
 }
 
 #main-container {
