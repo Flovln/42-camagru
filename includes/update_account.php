@@ -5,17 +5,19 @@
 
   if (isset($_POST['submit'], $_POST['newpwd'], $_POST['newpwd_confir'])) {
     $error = array();
+    $pwd = htmlspecialchars($_POST['newpwd']);
+    $pwdConf = htmlspecialchars($_POST['newpwd_confir']);
 
-    if (!is_valid_passwd($_POST['newpwd'])) {
+    if (!is_valid_passwd($pwd)) {
       array_push($error, "Please secure your password");
     }
-    else if ($_POST['newpwd'] !== $_POST['newpwd_confir']) {
+    else if ($pwd !== $pwdConf) {
       array_push($error, "Please make sure to enter the same password");
     }
     if (!empty($error)) {
       header('Location: ../includes/update_account.php?error='.$error[0].'');
     }
-    $new_pwd = password_hash($_POST['newpwd'], PASSWORD_DEFAULT);
+    $new_pwd = password_hash($pwd, PASSWORD_DEFAULT);
     $token = bin2hex(random_bytes(16));
     $req = $pdo->prepare('UPDATE users SET password = :new_pwd WHERE email_id = :token');
     $req->bindValue('new_pwd', $new_pwd);

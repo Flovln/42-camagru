@@ -35,7 +35,6 @@
         }
         else {
           echo "account activated";
-          // rediriger vers home page
         }
       }
       else {

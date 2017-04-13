@@ -6,7 +6,7 @@
   {
     if (user_sign_in($_POST['login'], $_POST['passwd']) === true)
     {
-      $login = $_POST['login'];
+      $login = htmlspecialchars($_POST['login']);
       $req = $pdo->prepare('SELECT * FROM users WHERE login = :login');
       $req->bindValue(':login', $login);
       $req->execute();

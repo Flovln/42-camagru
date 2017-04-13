@@ -13,6 +13,7 @@ define('ROOT', 'index.php');
 define('SNAP_LIMIT', 4);
 //use for gallery pagination
 define('GALLERY_LIMIT', 6);
+
 /*
 * * Application requirements
 */
