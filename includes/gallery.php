@@ -20,7 +20,7 @@
   <body class="gallery">
     <div id="header">
       <a class="logo" href="../index.php">Camagru</a>
-      <a class="gallery-link" href="includes/gallery.php">Gallery</a>
+      <a class="gallery-link" href="gallery.php">Gallery</a>
         <? 
           if (isset($_SESSION['auth'])) {
             echo "Welcome " . $_SESSION['login'];
@@ -40,22 +40,23 @@
         $imagesSelection = get_selected_images($_SESSION['user_id'], $start_from);
         foreach ($imagesSelection as $key) {
           echo "<div class=gallery-img-container >";
-            echo "Posted on ".$key['captureTime']." by ".$key['user']."";
+            echo "<p>Posted on ".$key['captureTime']." by ".$key['user']."</p>";
             echo "<img class=img-props-gallery src='../".$key['path']."'alt='".$key['id']."'>";
             echo "</br>";
             if (!empty($_SESSION['auth'])){
               echo '<form style="display:inline;" action="../actions/manage_comments.php" method="POST">';
               echo '<input type="textarea" name="comment" maxlength="2000" style="width:20vmin;height:2vmin" />';
               echo '<input type="text" name="picId" value="'.$key["id"].'" style="display:none" />';
-              echo '<input type="submit" value="post" style="display:inline">';
+              echo '<input class=submit-comment type="submit" value="post" style="display:inline">';
               echo '</form>';            
             }
-            echo '&hearts;';
+            echo '<p>&hearts;';
             fetch_likes($key['id']);
+            echo '</p>';
             if (!empty($_SESSION['auth'])){
               echo '<form action="../actions/manage_likes.php" style="display:inline;" method="POST">';
-              echo '<input type="text" name="picId" value="'.$key["id"].'" style="display:none" />';
-              echo '<input type="submit" value="Like"/>';
+              echo '<input class=input-comment type="text" name="picId" value="'.$key["id"].'" style="display:none" />';
+              echo '<input class=submit-like type="submit" value="Like"/>';
               echo '</form>';            
             }
             echo '</br>';

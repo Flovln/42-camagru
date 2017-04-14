@@ -30,8 +30,8 @@
 		  	echo 'DB error comments';  	
 			}
 	    $user = $req->fetch();
-			echo '-'.$user['login'] . ': ';
-	  	echo $comment['content'].'</br>';
+			echo '<p>-'.$user['login'] . ': ';
+	  	echo $comment['content'].'</p></br>';
 	  }
 	}
 

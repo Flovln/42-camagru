@@ -4,6 +4,12 @@ html,
 	box-sizing: border-box;
 }
 
+p {
+	margin: 0;
+	font-size: 1.5vmin;
+	display: inline-block;
+}
+
 body.home {
 	margin: 0;
 	padding: 0;
@@ -69,6 +75,7 @@ body.signup {
 	font-size: 1.7vmin;
 	padding-right: 3vmin;
 	padding-top: 1.1vmin;
+	margin-bottom: 0;
 }
 
 .sign-menu {
@@ -141,7 +148,7 @@ body.signup {
 }
 
 .gallery-img-container {
-	margin-top: 2vmin;
+	margin-top: 1.6vmin;
 	margin-bottom: 4.2vmin;
 	margin-right: 0.5vmin;
 	height: 33vmin;
@@ -168,7 +175,7 @@ body.signup {
   overflow: auto;
   display: inline-block;
   font-size: medium;
-  margin-top: 2vmin;
+  margin-top: 1.4vmin;
   text-align: left;
 	border-style: solid;
 	border-color: #6D6D6D;
@@ -178,6 +185,23 @@ body.signup {
 .gallery-pagination {
 	text-align: center;
 	margin-top: 2vmin;
+}
+
+.input-comment {
+	width: 5vmin;
+	height: 1.2vmin;
+}
+
+.submit-like {
+	margin-left: 0.1vmin;
+	width: 3.4vmin;
+	height: 2vmin;
+}
+
+.submit-comment {
+	margin-left: 0.1vmin;
+	width: 3.4vmin;
+	height: 2vmin;
 }
 
 /************************************************/
