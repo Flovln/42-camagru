@@ -38,6 +38,8 @@ body.signup {
 	position: relative;
 }
 
+/******* HEADER *******/
+
 #header {
 	background: #F7F7F7;
 	height: 7.2vmin;
@@ -52,15 +54,31 @@ body.signup {
 	font-size: 3.2vmin;
 	text-decoration: none;
 	color: #000000;
+	padding-right: 9vmin;
 }
 
 .gallery-link {
 	margin-top: 2.1vmin;
+	margin-right: 8vmin;
 	float: right;
 	font-family: sans-serif;
 	font-size: 2vmin;
 	color: #000000;
 }
+
+.home {
+	font-family: sans-serif;
+	padding-left: 45vmin;
+	font-size: 1.5vmin;
+}
+
+.logout {
+	font-family: sans-serif;
+	padding-left: 1.3vmin;
+	font-size: 1.5vmin;
+}
+
+/*************************/
 
 #footer {
 	background: #FFFFFF;
@@ -218,7 +236,6 @@ body.signup {
  	width: 35%;
  	height: 900px;
  	background-color: #A66161;
-/*	overflow: scroll;*/
  }
 
 #filter-container {
@@ -286,15 +303,3 @@ body.signup {
 .delbutton {
 	text-align: center;
 }
-
-#logout {
- 	float: right;
- 	margin-top: 20px;
-	margin-right: 40px;
-	border: none;
-    width: 10%;
-    height: 30%;
-    box-shadow: 0 0.5px 0 0 #565656;
-    background-color: #AFAFAF;
-    border-radius: 2px 2px 2px 2px;
- }

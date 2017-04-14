@@ -12,10 +12,8 @@
       <a class="logo" href="index.php">Camagru</a>
       <a class="gallery-link" href="includes/gallery.php">Gallery</a>
       <? if (isset($_SESSION['auth'])) {
-        echo "Welcome " . $_SESSION['login'];?>
-        <a href="index.php">Home</a>
-        <div id="logout">
-          <a href="actions/logout.php">Logout</a>
-        </div>
+        echo "Welcome " . $_SESSION['login']."!";?>
+        <a class="home" href="index.php">Home</a>
+        <a class="logout" href="actions/logout.php">Logout</a>
       <? } ?>
     </div>

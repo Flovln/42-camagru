@@ -21,14 +21,11 @@
     <div id="header">
       <a class="logo" href="../index.php">Camagru</a>
       <a class="gallery-link" href="gallery.php">Gallery</a>
-        <? 
-          if (isset($_SESSION['auth'])) {
-            echo "Welcome " . $_SESSION['login'];
-        ?>
-        <div id="logout">
-          <? 
-            echo ("<li><a href=\"../actions/logout.php\">Logout</a></li>");?>
-        </div>
+      <? 
+        if (isset($_SESSION['auth'])) {
+          echo "Welcome " . $_SESSION['login']."!";?>
+      <a class="home" href="../index.php">Home</a>
+      <a class="logout" href="../actions/logout.php">Logout</a>
       <? } ?>
     </div>
     <br/>
