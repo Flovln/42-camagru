@@ -1,3 +1,6 @@
+<?
+  include('../tools/state.php');
+?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -22,6 +25,7 @@
 		  <br/>
 		  <input class="submit-style" type="submit" name="submit" value="Send"/>
 		</form>
+    <?display_error('err_new_password')?>
     </div>
     <? include '../includes/footer.php'; ?>
   </body>

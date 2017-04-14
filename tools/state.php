@@ -7,9 +7,9 @@
 	    unset($_SESSION["error"]);
 	    echo $err;
 	  } else if ($error === 'err_signin' && isset($_GET['error'])) {
-	  	echo $_GET['error'];
+	  	echo '<a class=error-sign >'.$_GET['error'].'</a>';
 	  } else if ($error === 'err_new_password' && isset($_GET['error'])) {
-	  	echo $_GET['error'];
+	  	echo '<a class=error-sign >'.$_GET['error'].'</a>';
 	  }
 	}
 

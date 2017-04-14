@@ -34,7 +34,7 @@
         <br/>
         <input type="submit" name="submit" value="OK" class="submit-style" required />
       </form>
-      <?display_error('err_signin')?>
+      <?display_error('err_new_password')?>
     </div>
     <? include '../includes/footer.php'; ?>
   </body>
