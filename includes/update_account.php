@@ -29,16 +29,34 @@
       echo 'You can now start using your new password';
     }
   }
-
-  echo '<form action="../includes/update_account.php?token='.$_GET['token'].'" method="POST">'?>
-    New password:
-    <br /> 
-    <input type="password" name="newpwd"/>
-    <br />
-    New password confirmation:
-    <br />
-    <input type="password" name="newpwd_confir"/>
-    <br />
-    <input type="submit" name="submit" value="OK"/>
-  </form>
-<? display_error('err_new_password')?>
+?>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Camagru">
+    <meta name="author" content="Florent Violin">
+    <link rel="stylesheet" type="text/css" href="../style/main.css">
+    <title>Camagru</title>
+  </head>
+  <body class="signup">
+    <div id="header">
+      <a class="logo" href="../index.php">Camagru</a>
+      <a class="gallery-link" href="gallery.php">Gallery</a>
+    </div>
+    <div class="reset-pwd-style">
+    <?  echo '<form action="../includes/update_account.php?token='.$_GET['token'].'" method="POST">'?>
+        New password:
+        <br /> 
+        <input class="input-style" type="password" name="newpwd" required />
+        <br />
+        New password confirmation:
+        <br />
+        <input class="input-style" type="password" name="newpwd_confir" required />
+        <br />
+        <input class="submit-style" type="submit" name="submit" value="OK"/>
+      </form>
+    <? display_error('err_new_password')?>
+    </div>
+    <? include '../includes/footer.php'; ?>
+  </body>
+</html>
