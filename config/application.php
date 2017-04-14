@@ -10,7 +10,7 @@ define('UPLOADS', 'uploads/');
 define('FILTERS', 'filters/');
 define('ROOT', 'index.php');
 //use for user snap pagination
-define('SNAP_LIMIT', 4);
+define('SNAP_LIMIT', 3);
 //use for gallery pagination
 define('GALLERY_LIMIT', 6);
 

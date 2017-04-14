@@ -40,16 +40,16 @@
       <div id="webcam">
         <video id="video"></video> 
         <canvas id="canvas"></canvas>
-        <button id="startbutton" disabled>Take a picture</button>
+        <button id="startbutton" disabled><p>Take a picture<p/></button>
       </div>
     </div>
   </form>
   <div id="img-upload">
     <form action="actions/upload.php" method="post" enctype="multipart/form-data">
-      Select an image to upload:
+      <p>Select an image to upload:</p>
       <input id="uploadFilter" type="hidden" name="uploadFilter" >
-      <input id="fileToUpload" type="file" name="fileToUpload">
-      <input id="uploadButton" type="submit" name="upload_submit" value="Upload Image" disabled>
+      <input class="file-button" id="fileToUpload" type="file" name="fileToUpload">
+      <input class="upload-button" id="uploadButton" type="submit" name="upload_submit" value="Upload Image" disabled>
       <div><? display_error('err_upload'); ?></div>
     </form>
   </div>
@@ -59,12 +59,12 @@
 <div id="side-container">
 </br>
   <? include('side_container.php');?>
-</div>
-<div class="snap-pagination">
-<?  if ($imagesCount > SNAP_LIMIT) {
-    for ($i=0; $i < $imagesCount / SNAP_LIMIT; $i++) { 
-      echo "<a href='index.php?page=".($i + 1)."'>".($i + 1)."</a>";
+  <div class="snap-pagination">
+  <?  if ($imagesCount > SNAP_LIMIT) {
+      for ($i=0; $i < $imagesCount / SNAP_LIMIT; $i++) { 
+        echo "<a class=home-pagination href='index.php?page=".($i + 1)."'>".($i + 1)."</a>";
+      }
     }
-  }
-?>
+  ?>
+</div>
 </div>

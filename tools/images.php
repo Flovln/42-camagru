@@ -65,6 +65,7 @@ function create_fly_picture($img_data, $filter, $user_id, $img_type){
 function save_picture($user_id, $image)
 {
   global $pdo;
+  date_default_timezone_set("Europe/Paris");
 
   if ($user_id === false) {
     return false;
