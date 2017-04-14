@@ -175,7 +175,7 @@ body.signup {
   overflow: auto;
   display: inline-block;
   font-size: medium;
-  margin-top: 1.4vmin;
+  margin-top: 1.7vmin;
   text-align: left;
 	border-style: solid;
 	border-color: #6D6D6D;
@@ -193,15 +193,15 @@ body.signup {
 }
 
 .submit-like {
-	margin-left: 0.1vmin;
 	width: 3.4vmin;
-	height: 2vmin;
+	height: 1vmin;
+	font-size: 1vmin;
 }
 
 .submit-comment {
-	margin-left: 0.1vmin;
 	width: 3.4vmin;
-	height: 2vmin;
+	height: 1.2vmin;
+	font-size: 1vmin;
 }
 
 /************************************************/

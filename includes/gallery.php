@@ -47,7 +47,7 @@
               echo '<form style="display:inline;" action="../actions/manage_comments.php" method="POST">';
               echo '<input type="textarea" name="comment" maxlength="2000" style="width:20vmin;height:2vmin" />';
               echo '<input type="text" name="picId" value="'.$key["id"].'" style="display:none" />';
-              echo '<input class=submit-comment type="submit" value="post" style="display:inline">';
+              echo '<input class=submit-comment type="submit" value="Post" style="display:inline">';
               echo '</form>';            
             }
             echo '<p>&hearts;';
