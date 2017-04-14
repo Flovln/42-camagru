@@ -16,7 +16,7 @@
       <br/>
       <br/>
       <br/>
-		  Please enter your email:
+		  <p>Please enter your email:</p>
 		  <br/>
 		  <input class="input-style" type="email" name="email" required/>
 		  <br/>

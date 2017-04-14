@@ -10,6 +10,10 @@ p {
 	display: inline-block;
 }
 
+h2 {
+	font-size: 2.7vmin;
+}
+
 body.home {
 	margin: 0;
 	padding: 0;
@@ -222,9 +226,6 @@ body.signup {
 	font-size: 1vmin;
 }
 
-/************************************************/
-
-
 /****** Home Page *********/
 
 #main-container {
@@ -332,10 +333,4 @@ body.signup {
 .home-pagination {
 	color: white;
 	padding: 0.2vmin;
-}
-/**************************/
-
-#home_footer {
- 	height: 10%;
- 	background-color: #D2DEA3;
 }

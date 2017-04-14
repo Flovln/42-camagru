@@ -20,15 +20,15 @@
         <br/>
         <br/>
         <br/>
-        Username:
+        <p>Username:</p>
         <br/>
         <input type="login" name="login" class="input-style" required />
         <br/>
-        Password: 
+        <p>Password:</p>
         <br/>
         <input type="password" name="passwd" class="input-style" required />
         <br/>
-        Email:
+        <p>Email:</p>
         <br/>
         <input type="email" name="email" class="input-style" required></input>
         <br/>
