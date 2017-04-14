@@ -9,7 +9,7 @@ function selectedRadioButton()
   else if (document.getElementById("r4").checked == true)
     return ("filter4_crop.png");
   else if (document.getElementById("r5").checked == true)
-    return ("filter5.png");
+    return ("filter5_crop.png");
   return ("");
 }
 

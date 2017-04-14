@@ -145,7 +145,6 @@ body.signup {
 }
 
 .reset-button-pwd-style {
-/* 	margin-top: 1vmin;*/
   border: none;
   width: 35vmin;
   box-shadow: 0 1px 0 0 #565656;
@@ -163,6 +162,10 @@ body.signup {
 	margin-top: 19vmin;
 }
 
+.reset-pwd-style {
+	text-align: center;
+}
+
 /************* GALLERY STYLE **************/
 
 .gallery-container {
@@ -173,7 +176,7 @@ body.signup {
 	margin-top: 1.6vmin;
 	margin-bottom: 4.2vmin;
 	margin-right: 0.5vmin;
-	height: 33vmin;
+	height: 32.5vmin;
 	width: 33vmin;
 	display: inline-block;
 	text-align: center;
@@ -197,7 +200,7 @@ body.signup {
   overflow: auto;
   display: inline-block;
   font-size: medium;
-  margin-top: 1.7vmin;
+  margin-top: 1.1vmin;
   text-align: left;
 	border-style: solid;
 	border-color: #6D6D6D;
@@ -339,5 +342,4 @@ body.signup {
 
 .error-sign {
 	color: white;
-	text-align: center;
 }

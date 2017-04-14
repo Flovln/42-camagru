@@ -25,15 +25,15 @@
       </label>
       <label>
         <input id="r3" type="radio" name="filter" value="filter3.png" required>
-        <img id="fil3" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter3.png">
+        <img id="fil3" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter3_crop.png">
       </label>
       <label>
         <input id="r4" type="radio" name="filter" value="filter4.png" required>
-        <img id="fil4" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter4.png">
+        <img id="fil4" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter4_crop.png">
       </label>
       <label>
         <input id="r5" type="radio" name="filter" value="filter4.png" required>
-        <img id="fil5" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter5.png">
+        <img id="fil5" class="filters" width="" onClick="try {selectFilter(this)} catch(e){}" src="filters/filter5_crop.png">
       </label>
     </div>
     <div id="webcam-container">

@@ -14,18 +14,19 @@
       <a class="logo" href="../index.php">Camagru</a>
       <a class="gallery-link" href="gallery.php">Gallery</a>
     </div>
-		<form class="reset-password-style" action="../actions/reset_password.php" method="POST">
-      <h2>We will send you an email to reset your password.</h2>
-      <br/>
-      <br/>
-      <br/>
-		  <p>Please enter your email:</p>
-		  <br/>
-		  <input class="input-style" type="email" name="email" required/>
-		  <br/>
-		  <input class="submit-style" type="submit" name="submit" value="Send"/>
-		</form>
-    <?display_error('err_new_password')?>
+    <div class="reset-pwd-style">
+  		<form class="reset-password-style" action="../actions/reset_password.php" method="POST">
+        <h2>We will send you an email to reset your password.</h2>
+        <br/>
+        <br/>
+        <br/>
+  		  <p>Please enter your email:</p>
+  		  <br/>
+  		  <input class="input-style" type="email" name="email" required/>
+  		  <br/>
+  		  <input class="submit-style" type="submit" name="submit" value="Send"/>
+  		</form>
+      <?display_error('err_new_password')?>
     </div>
     <? include '../includes/footer.php'; ?>
   </body>
