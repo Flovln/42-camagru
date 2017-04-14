@@ -2,11 +2,11 @@
   <form action="actions/sign_in.php" method="POST" autocomplete="off">
     Username:
     <br />
-    <input type="login" name="login" class="input-style"/>
+    <input type="login" name="login" class="input-style" required/>
     <br />
     Password:
     <br /> 
-    <input type="password" name="passwd" class="input-style" />
+    <input type="password" name="passwd" class="input-style" required/>
     <br />
     <input type="submit" name="submit" value="Sign In" class="submit-style" />
     <br />
