@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <form action="./includes/sign_in.php" method="POST">
-	       Username:
-            <br />
-            <input type="login" name="login" class="enter_style"/>
-            <br />
-            Password:
-            <br /> 
-            <input type="password" name="passwd" class="enter_style"/>
-            <br />
-            <input type="submit" name="submit" value="Sign In" class="submit_style" />
-            <br />
-        </form>
-        <form action="./includes/sign_up.php" method="POST">
-            <input type="submit" name="submit" value="Sign Up" id="signup_style"></input>
-        </form>
-        <br />
-        <form action="./includes/forgot_pwd.php" method="POST">
-            <input type="submit" name="submit" value="Forgot your password?" id="forgot_pwd_style"></input>
-        </form>
-    </body>
-</html>
+<div class="sign-menu">
+  <form action="actions/sign_in.php" method="POST" autocomplete="off">
+    Username:
+    <br />
+    <input type="login" name="login" class="input-style" required/>
+    <br />
+    Password:
+    <br /> 
+    <input type="password" name="passwd" class="input-style" required/>
+    <br />
+    <input type="submit" name="submit" value="Sign In" class="submit-style" />
+    <br />
+  </form>
+  <br />
+  <div><a class="reset-button-pwd-style" href="includes/reset_my_password.php">Forgot your password ? </a></div><br />
+  <div><a class="signup-button-style" href="includes/sign_up.php">Sign Up </a></div>
+</div>

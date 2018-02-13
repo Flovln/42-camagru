@@ -12,17 +12,19 @@ CREATE TABLE `Images` (
 	`user` varchar(255) NOT NULL,
 	`user_id` int(10) unsigned NOT NULL, 
 	`path` varchar(255) NOT NULL,
-	`date` DATETIME NOT NULL
+	`captureTime` DATETIME NOT NULL
 );
 
 CREATE TABLE `Likes` (
 	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`login` varchar(255) NOT NULL,
-	`filepathimage` varchar(255) NOT NULL
+	`image_id` int(11) NOT NULL,
+	`user_id` int(11) NOT NULL
 );
 
 CREATE TABLE Comments (
 	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`login` varchar(255) NOT NULL,
-	`filepathimage` varchar(255) NOT NULL
+	`image_id` int(11) NOT NULL,
+	`user_id` int(11) NOT NULL,
+	`content` varchar(255) NOT NULL,	
+	`textTime` DATETIME NOT NULL
 );
