@@ -12,29 +12,29 @@ Create a social media (Instagram like) website allowing users to take, edit, upl
 	- Frameworks not allowed
 	- ORM not allowed
 	- Input forms validation
-		- Secured passwords and identifiers
-		- Hashed passwords
-		- Variables protection (HTML/Javascript injection)
-		- Upload content protection (File upload security)
-		- SQL query protection (SQL injection)
+	 - Secured passwords and identifiers
+	 - Hashed passwords
+	 - Variables protection (HTML/Javascript injection)
+	 - Upload content protection (File upload security)
+	 - SQL query protection (SQL injection)
 	- User can logout from anywhere from the website
 	- User cannot take photos if he is not log in
 	- User cannot like or comments photos from the gallery if not log in
 	- Image rendering must be done server side
 
-# Technologies
+## Technologies
 
 	- Server
-		- Apache
+	 - Apache
 	- Database
-		- MySQL
-		- Driver
-			- PDO
+	 - MySQL
+	 - Driver
+	  - PDO
 	- Compatibily
-		- Firefox >= 41
-		- Chrome >= 46
+	 - Firefox >= 41
+	 - Chrome >= 46
 
-# Views
+## Views
 
 	- [ ] Register
 	- [ ] Login
